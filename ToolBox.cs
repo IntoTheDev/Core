@@ -1,0 +1,109 @@
+﻿using UnityEngine;
+using UnityEngine.Tilemaps;
+
+namespace ToolBox
+{
+	public static class Extensions
+	{
+		#region TransformExtensions
+		public static void ResetTransform(this Transform trans)
+		{
+			trans.position = Vector3.zero;
+			trans.localRotation = Quaternion.identity;
+			trans.localScale = new Vector3(1f, 1f, 1f);
+		}
+		#endregion
+
+		#region GameObjectExtensions
+		public static void ResetTag(this GameObject obj)
+		{
+			obj.tag = "Untagged";
+		}
+		#endregion
+
+		#region Vector3Extensions
+		public static Vector3 Multiply(this Vector3 vector, float multiplier)
+		{
+			vector.x *= multiplier;
+			vector.y *= multiplier;
+			vector.z *= multiplier;
+
+			return vector;
+		}
+
+		public static Vector2 Multiply(this Vector2 vector, float multiplier)
+		{
+			vector.x *= multiplier;
+			vector.y *= multiplier;
+
+			return vector;
+		}
+		#endregion
+
+		#region QuaternionExtensions
+		/// <summary>
+		/// Finds the Z angle in degrees in direction from origin to destination
+		/// </summary>
+		public static Quaternion DegreesZ(this Quaternion quaternion, Vector3 destination, Vector3 origin, int offset)
+		{
+			Vector3 difference = Vector3.Normalize(destination - origin);
+			float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+			return quaternion = Quaternion.Euler(0f, 0f, rotationZ + offset);
+		}
+		#endregion
+		/// <summary>
+		/// Return mouse position in world space
+		/// </summary>
+		public static Vector3 MousePositionInWorld(this Camera cam) => cam.ScreenToWorldPoint(Input.mousePosition);
+
+		/// <summary>
+		/// Return random element from params
+		/// </summary>
+		public static T Choose<T>(params T[] p) => p[Random.Range(0, p.Length)];
+
+		/// <summary>
+		/// Return true if percent chance success
+		/// </summary>
+		public static bool PercentChance(float chance) => Random.value <= chance;
+
+		#region Tilemap extensions
+		public static void FixedBoxFill(this Tilemap tilemap, TileBase tile, RectInt rectSize)
+		{
+			for (int cellX = rectSize.x; cellX < rectSize.width; cellX++)
+			{
+				for (int cellY = rectSize.y; cellY < rectSize.height; cellY++)
+				{
+					Vector3Int tilePosition = new Vector3Int(cellX, cellY, 0);
+					tilemap.SetTile(tilePosition, tile);
+				}
+			}
+		}
+
+		public static void FixedBoxFill(this Tilemap tilemap, TileBase[] tiles, RectInt rectSize)
+		{
+			for (int cellX = rectSize.x; cellX < rectSize.width; cellX++)
+			{
+				for (int cellY = rectSize.y; cellY < rectSize.height; cellY++)
+				{
+					Vector3Int tilePosition = new Vector3Int(cellX, cellY, 0);
+					tilemap.SetRandomTile(tilePosition, tiles);
+				}
+			}
+		}
+
+		public static void SetRandomTile(this Tilemap tilemap, Vector3Int position, TileBase[] tiles)
+		{
+			int tileIndex = Random.Range(0, tiles.Length);
+			TileBase tile = tiles[tileIndex];
+
+			tilemap.SetTile(position, tile);
+		}
+		#endregion
+	}
+}
+
+
+
+
+
+

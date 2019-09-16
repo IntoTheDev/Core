@@ -2,14 +2,13 @@
 
 public class GlobalReference : MonoBehaviour
 {
-	public static float deltaTime;
-	public static float fixedDeltaTime;
-
-	public static float PPU = 32f;
+	public static float deltaTime { get; private set; }
+	public static float fixedDeltaTime { get; private set; }
+	public static float PPU { get; private set; }
 
 	private void Awake()
 	{
-		DontDestroyOnLoad(gameObject);
+		PPU = 32f;
 	}
 
 	private void Update()

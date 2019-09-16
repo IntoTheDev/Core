@@ -91,12 +91,42 @@ namespace ToolBox
 			}
 		}
 
+		public static void FixedBoxFill(
+			this Tilemap tilemap,
+			TileBase mainTile,
+			TileBase[] otherTiles,
+			float chancheToOtherTiles,
+			RectInt rectSize)
+		{
+			for (int cellX = rectSize.x; cellX < rectSize.width; cellX++)
+			{
+				for (int cellY = rectSize.y; cellY < rectSize.height; cellY++)
+				{
+					Vector3Int tilePosition = new Vector3Int(cellX, cellY, 0);
+					tilemap.SetRandomMainTile(tilePosition, mainTile, otherTiles, chancheToOtherTiles);
+				}
+			}
+		}
+
 		public static void SetRandomTile(this Tilemap tilemap, Vector3Int position, TileBase[] tiles)
 		{
 			int tileIndex = Random.Range(0, tiles.Length);
 			TileBase tile = tiles[tileIndex];
 
 			tilemap.SetTile(position, tile);
+		}
+
+		public static void SetRandomMainTile(
+			this Tilemap tilemap,
+			Vector3Int position,
+			TileBase mainTile,
+			TileBase[] otherTiles,
+			float chancheToOtherTiles)
+		{
+			if (PercentChance(chancheToOtherTiles))
+				tilemap.SetRandomTile(position, otherTiles);
+			else
+				tilemap.SetTile(position, mainTile);
 		}
 		#endregion
 	}

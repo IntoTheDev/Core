@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace ToolBox
+namespace ToolBox.Extensions
 {
 	public static class Extensions
 	{

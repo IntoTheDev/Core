@@ -5,23 +5,23 @@ namespace ToolBox.Extensions
 {
 	public static class Extensions
 	{
-		#region TransformExtensions
+		#region Transform Extensions
 		public static void ResetTransform(this Transform trans)
 		{
-			trans.position = Vector3.zero;
+			trans.localPosition = Vector3.zero;
 			trans.localRotation = Quaternion.identity;
-			trans.localScale = new Vector3(1f, 1f, 1f);
+			trans.localScale = Vector3.one;
 		}
 		#endregion
 
-		#region GameObjectExtensions
+		#region GameObject Extensions
 		public static void ResetTag(this GameObject obj)
 		{
 			obj.tag = "Untagged";
 		}
 		#endregion
 
-		#region Vector3Extensions
+		#region Vector3 Extensions
 		public static Vector3 Multiply(this Vector3 vector, float multiplier)
 		{
 			vector.x *= multiplier;
@@ -40,7 +40,7 @@ namespace ToolBox.Extensions
 		}
 		#endregion
 
-		#region QuaternionExtensions
+		#region Quaternion Extensions
 		/// <summary>
 		/// Finds the Z angle in degrees in direction from origin to destination
 		/// </summary>
@@ -66,7 +66,7 @@ namespace ToolBox.Extensions
 		/// </summary>
 		public static bool PercentChance(float chance) => Random.value <= chance;
 
-		#region Tilemap extensions
+		#region Tilemap Extensions
 		public static void FixedBoxFill(this Tilemap tilemap, TileBase tile, RectInt rectSize)
 		{
 			for (int cellX = rectSize.x; cellX < rectSize.width; cellX++)

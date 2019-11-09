@@ -8,7 +8,7 @@ namespace ToolBox.Extensions
 		#region Transform Extensions
 		public static void ResetTransform(this Transform trans)
 		{
-			trans.localPosition = Vector3.zero;
+			trans.position = Vector3.zero;
 			trans.localRotation = Quaternion.identity;
 			trans.localScale = Vector3.one;
 		}
@@ -44,11 +44,11 @@ namespace ToolBox.Extensions
 		/// <summary>
 		/// Finds the Z angle in degrees in direction from origin to destination
 		/// </summary>
-		public static Quaternion DegreesZ(this Quaternion quaternion, Vector3 destination, Vector3 origin, int offset)
+		public static Quaternion Rotate(this Quaternion quaternion, Vector3 destination, Vector3 origin, Vector3 axis)
 		{
 			Vector3 difference = Vector3.Normalize(destination - origin);
-			float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-			return quaternion = Quaternion.Euler(0f, 0f, rotationZ + offset);
+			float angle = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+			return quaternion = Quaternion.AngleAxis(angle, axis);
 		}
 		#endregion
 		/// <summary>

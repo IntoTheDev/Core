@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿#if UNITY_EDITOR
+using UnityEditor;
 using UnityEngine;
 
 namespace ToolBox.Editor
@@ -17,4 +18,4 @@ namespace ToolBox.Editor
 		}
 	}
 }
-
+#endif

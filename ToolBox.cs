@@ -129,6 +129,13 @@ namespace ToolBox.Extensions
 				tilemap.SetTile(position, mainTile);
 		}
 		#endregion
+
+		public static void Swap<T>(this T[] array, int a, int b)
+		{
+			T x = array[a];
+			array[a] = array[b];
+			array[b] = x;
+		}
 	}
 }
 

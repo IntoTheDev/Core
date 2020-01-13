@@ -1,0 +1,14 @@
+using Sirenix.OdinInspector;
+using UnityEngine;
+
+namespace ToolBox.Behaviours.Conditions
+{
+	public class #SCRIPTNAME# : Condition
+	{
+		public override void ProcessTask()
+		{
+			bool result = true;
+			ProcessCondition(result);
+		}
+	}
+}

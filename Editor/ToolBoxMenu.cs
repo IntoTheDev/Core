@@ -20,6 +20,7 @@ namespace ToolBox.Editor
 			tree.Add("Condition Generation", new ConditionGeneration());
 			tree.Add("Game Event Generation", new GameEventGeneration());
 			tree.Add("Collection Generation", new CollectionGeneration());
+			tree.Add("Shared Data Generation", new SharedDataGeneration());
 
 			return tree;
 		}

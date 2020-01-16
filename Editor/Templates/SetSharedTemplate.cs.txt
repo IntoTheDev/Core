@@ -1,0 +1,6 @@
+﻿using UnityEngine;
+
+namespace ToolBox.Behaviours.Actions
+{
+	public class SetShared#FILENAME# : SetSharedData<#TYPENAME#, Context#FILENAME#Key> { }
+}

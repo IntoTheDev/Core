@@ -33,6 +33,5 @@ namespace ToolBox.Editor
 				folder = "Assets/ToolBox/Scriptable Objects Collections";
 			}
 		}
-
 	}
 }

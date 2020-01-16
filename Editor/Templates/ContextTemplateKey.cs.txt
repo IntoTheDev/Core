@@ -1,0 +1,7 @@
+﻿using UnityEngine;
+
+namespace ToolBox.Behaviours
+{
+	[CreateAssetMenu(menuName = "ToolBox/Behaviours/Context/#FILENAME# Key")]
+	public class Context#FILENAME#Key : ContextKey { }
+}

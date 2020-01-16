@@ -6,10 +6,13 @@ using System.Diagnostics;
 using System.Collections.Generic;
 using System;
 using ToolBox.Pools;
+using ToolBox.Behaviours;
+using ToolBox.Groups;
+using Sirenix.Serialization;
 
 namespace ToolBox.Test
 {
-	public class ToolBoxTest : MonoBehaviour
+	public class ToolBoxTest : SerializedMonoBehaviour
 	{
 
 	}

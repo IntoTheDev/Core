@@ -136,6 +136,9 @@ namespace ToolBox.Extensions
 			array[a] = array[b];
 			array[b] = x;
 		}
+
+		public static string MakeFirstLetterUppercase(this string text) =>
+			text.Substring(0, 1).ToUpper() + text.Substring(1);
 	}
 }
 

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+using System;
+using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace ToolBox.Extensions
@@ -59,12 +60,12 @@ namespace ToolBox.Extensions
 		/// <summary>
 		/// Return random element from params
 		/// </summary>
-		public static T Choose<T>(params T[] p) => p[Random.Range(0, p.Length)];
+		public static T Choose<T>(params T[] p) => p[UnityEngine.Random.Range(0, p.Length)];
 
 		/// <summary>
 		/// Return true if percent chance success
 		/// </summary>
-		public static bool PercentChance(float chance) => Random.value <= chance;
+		public static bool PercentChance(float chance) => UnityEngine.Random.value <= chance;
 
 		#region Tilemap Extensions
 		public static void FixedBoxFill(this Tilemap tilemap, TileBase tile, RectInt rectSize)
@@ -110,7 +111,7 @@ namespace ToolBox.Extensions
 
 		public static void SetRandomTile(this Tilemap tilemap, Vector3Int position, TileBase[] tiles)
 		{
-			int tileIndex = Random.Range(0, tiles.Length);
+			int tileIndex = UnityEngine.Random.Range(0, tiles.Length);
 			TileBase tile = tiles[tileIndex];
 
 			tilemap.SetTile(position, tile);
@@ -139,11 +140,15 @@ namespace ToolBox.Extensions
 
 		public static string MakeFirstLetterUppercase(this string text) =>
 			text.Substring(0, 1).ToUpper() + text.Substring(1);
+
+		public static void OverlapCircle(Vector2 position, float radius, LayerMask layerMask, Action<Collider2D[]> action)
+		{
+			Collider2D[] colliders = Physics2D.OverlapCircleAll(position, radius, layerMask);
+
+			if (colliders.Length == 0)
+				return;
+
+			action(colliders);
+		}
 	}
 }
-
-
-
-
-
-

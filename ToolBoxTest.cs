@@ -1,19 +1,13 @@
-﻿using Sirenix.OdinInspector;
-using UnityEngine;
-using UnityEngine.Tilemaps;
-using MEC;
-using System.Diagnostics;
+﻿using MEC;
+using Sirenix.OdinInspector;
 using System.Collections.Generic;
-using System;
-using ToolBox.Pools;
-using ToolBox.Behaviours;
-using ToolBox.Groups;
-using Sirenix.Serialization;
+using System.Diagnostics;
+using UnityEngine;
 
 namespace ToolBox.Test
 {
 	public class ToolBoxTest : SerializedMonoBehaviour
 	{
-
+		[SerializeField, PageList] private List<int> numbers = null;
 	}
 }

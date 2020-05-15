@@ -1,6 +1,0 @@
-﻿using UnityEngine;
-
-namespace ToolBox.Behaviours.Conditions
-{
-	public class CompareShared#FILENAME# : CompareSharedData<#TYPENAME#, Context#FILENAME#Key> { }
-}

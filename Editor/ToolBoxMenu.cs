@@ -16,7 +16,7 @@ namespace ToolBox.Editor
 			OdinMenuTree tree = new OdinMenuTree();
 			tree.Selection.SupportsMultiSelect = false;
 
-			tree.Add("Reactor Generation", new ReactorGeneration());
+			tree.Add("Module Generation", new ModuleGeneration());
 			tree.Add("Game Event Generation", new GameEventGeneration());
 			tree.Add("Collection Generation", new CollectionGeneration());
 

@@ -4,9 +4,9 @@ namespace ToolBox.Editor
 {
 	public partial class ToolBoxMenu
 	{
-		public class ConditionGeneration : ScriptGenerationWindow
+		public class ModuleGeneration : ScriptGenerationWindow
 		{
-			[Button("Generate Condition", ButtonSizes.Medium)]
+			[Button("Generate Module", ButtonSizes.Medium)]
 			protected override void GenerateScript() =>
 				base.GenerateScript();
 
@@ -18,8 +18,8 @@ namespace ToolBox.Editor
 
 			protected override void SetData()
 			{
-				template = "Assets/ToolBox/Main/Editor/Templates/ConditionTemplate.cs.txt";
-				folder = "Assets/ToolBox/Behaviour System/Conditions";
+				template = "Assets/ToolBox/Main/Editor/Templates/ModuleTemplate.cs.txt";
+				folder = "Assets/ToolBox/Modules System/Modules";
 			}
 		}
 	}

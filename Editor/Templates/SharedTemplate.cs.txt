@@ -1,7 +1,0 @@
-﻿using UnityEngine;
-
-namespace ToolBox.Behaviours
-{
-	[System.Serializable]
-	public class Shared#FILENAME# : SharedData<#TYPENAME#, Context#FILENAME#Key> { }
-}

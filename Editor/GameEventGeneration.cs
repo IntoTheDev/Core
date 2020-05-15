@@ -6,6 +6,8 @@
 		{
 			protected override void SetData()
 			{
+				filesCount = 2;
+
 				base.SetData();
 
 				folders[0] = "Assets/ToolBox/Observer Pattern/Game Events";
@@ -15,10 +17,6 @@
 				folders[1] = "Assets/ToolBox/Observer Pattern/Listeners";
 				templates[1] = "Assets/ToolBox/Main/Editor/Templates/GameEventListenerTemplate.cs.txt";
 				names[1] = $"{fileName}GameEventListener";
-
-				folders[2] = "Assets/ToolBox/Observer Pattern/UnityEvents";
-				templates[2] = "Assets/ToolBox/Main/Editor/Templates/UnityEventTemplate.cs.txt";
-				names[2] = $"{fileName}UnityEvent";
 			}
 		}
 	}

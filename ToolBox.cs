@@ -7,19 +7,17 @@ namespace ToolBox.Extensions
 	public static class Extensions
 	{
 		#region Transform Extensions
-		public static void ResetTransform(this Transform trans)
+		public static void ResetTransform(this Transform transform)
 		{
-			trans.position = Vector3.zero;
-			trans.localRotation = Quaternion.identity;
-			trans.localScale = Vector3.one;
+			transform.position = Vector3.zero;
+			transform.localRotation = Quaternion.identity;
+			transform.localScale = Vector3.one;
 		}
 		#endregion
 
 		#region GameObject Extensions
-		public static void ResetTag(this GameObject obj)
-		{
+		public static void ResetTag(this GameObject obj) =>
 			obj.tag = "Untagged";
-		}
 		#endregion
 
 		#region Vector3 Extensions
@@ -42,30 +40,49 @@ namespace ToolBox.Extensions
 		#endregion
 
 		#region Quaternion Extensions
-		/// <summary>
-		/// Finds the Z angle in degrees in direction from origin to destination
-		/// </summary>
 		public static Quaternion Rotate(this Quaternion quaternion, Vector3 destination, Vector3 origin, Vector3 axis)
 		{
-			Vector3 difference = Vector3.Normalize(destination - origin);
+			Vector3 difference = destination - origin;
 			float angle = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-			return quaternion = Quaternion.AngleAxis(angle, axis);
+
+			return Quaternion.AngleAxis(angle, axis);
+		}
+
+		public static float Rotate(Vector3 destination, Vector3 origin)
+		{
+			Vector3 difference = destination - origin;
+			float angle = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+
+			return angle;
 		}
 		#endregion
 		/// <summary>
 		/// Return mouse position in world space
 		/// </summary>
-		public static Vector3 MousePositionInWorld(this Camera cam) => cam.ScreenToWorldPoint(Input.mousePosition);
+		public static Vector3 MousePositionInWorld(this Camera cam) =>
+			cam.ScreenToWorldPoint(Input.mousePosition);
+
+		public static Vector3 Clamp(this Camera camera, Vector3 position)
+		{
+			Vector3 clampPosition = camera.WorldToViewportPoint(position);
+			clampPosition.x = Mathf.Clamp01(clampPosition.x);
+			clampPosition.y = Mathf.Clamp01(clampPosition.y);
+			clampPosition = camera.ViewportToWorldPoint(clampPosition);
+
+			return clampPosition;
+		}
 
 		/// <summary>
 		/// Return random element from params
 		/// </summary>
-		public static T Choose<T>(params T[] p) => p[UnityEngine.Random.Range(0, p.Length)];
+		public static T Choose<T>(params T[] p) =>
+			p[UnityEngine.Random.Range(0, p.Length)];
 
 		/// <summary>
 		/// Return true if percent chance success
 		/// </summary>
-		public static bool PercentChance(float chance) => UnityEngine.Random.value <= chance;
+		public static bool PercentChance(float chance) =>
+			UnityEngine.Random.value <= chance;
 
 		#region Tilemap Extensions
 		public static void FixedBoxFill(this Tilemap tilemap, TileBase tile, RectInt rectSize)

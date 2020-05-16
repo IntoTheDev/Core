@@ -1,4 +1,4 @@
-namespace ToolBox.Observer
+﻿namespace ToolBox.Observer
 {
 	public class #SCRIPTNAME#GameEventListener : TypeGameEventListener<#SCRIPTNAME#, #SCRIPTNAME#GameEvent> { }
 }

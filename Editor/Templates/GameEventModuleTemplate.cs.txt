@@ -1,0 +1,7 @@
+﻿using ToolBox.Observer;
+using UnityEngine;
+
+namespace ToolBox.Modules
+{
+	public class #SCRIPTNAME#GameEventInvoker : GenericGameEventInvoker<#SCRIPTNAME#, #SCRIPTNAME#GameEvent> { }
+}

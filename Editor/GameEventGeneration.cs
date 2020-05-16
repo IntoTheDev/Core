@@ -6,7 +6,7 @@
 		{
 			protected override void SetData()
 			{
-				filesCount = 2;
+				filesCount = 3;
 
 				base.SetData();
 
@@ -17,6 +17,10 @@
 				folders[1] = "Assets/ToolBox/Observer Pattern/Listeners";
 				templates[1] = "Assets/ToolBox/Main/Editor/Templates/GameEventListenerTemplate.cs.txt";
 				names[1] = $"{fileName}GameEventListener";
+
+				folders[2] = "Assets/ToolBox/Modules System/Modules/Observer";
+				templates[2] = "Assets/ToolBox/Main/Editor/Templates/GameEventModuleTemplate.cs.txt";
+				names[2] = $"{fileName}GameEventInvoker";
 			}
 		}
 	}

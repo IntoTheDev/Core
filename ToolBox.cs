@@ -1,4 +1,5 @@
 ﻿using System;
+using ToolBox.Tags;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -18,6 +19,51 @@ namespace ToolBox.Extensions
 		#region GameObject Extensions
 		public static void ResetTag(this GameObject obj) =>
 			obj.tag = "Untagged";
+
+		public static void AddTag(this GameObject entity, Tag tag) =>
+			tag.Add(entity);
+
+		public static void RemoveTag(this GameObject entity, Tag tag) =>
+			tag.Remove(entity);
+
+		public static bool HasTag(this GameObject entity, Tag tag) =>
+			tag.HasEntity(entity);
+
+		public static void AddTags(this GameObject entity, Tag[] tags)
+		{
+			for (int i = 0; i < tags.Length; i++)
+				tags[i].Add(entity);
+		}
+
+		public static void RemoveTags(this GameObject entity, Tag[] tags)
+		{
+			for (int i = 0; i < tags.Length; i++)
+				tags[i].Remove(entity);
+		}
+
+		public static bool HasTags(this GameObject entity, Tag[] tags, bool all)
+		{
+			if (all)
+			{
+				for (int i = 0; i < tags.Length; i++)
+				{
+					if (!tags[i].HasEntity(entity))
+						return false;
+				}
+
+				return true;
+			}
+			else
+			{
+				for (int i = 0; i < tags.Length; i++)
+				{
+					if (tags[i].HasEntity(entity))
+						return true;
+				}
+
+				return false;
+			}
+		}
 		#endregion
 
 		#region Vector3 Extensions

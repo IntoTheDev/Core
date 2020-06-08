@@ -1,7 +1,5 @@
 ﻿using Sirenix.OdinInspector.Editor;
 using UnityEditor;
-using System.Collections.Generic;
-using Sirenix.Utilities.Editor;
 
 namespace ToolBox.Editor
 {
@@ -17,7 +15,7 @@ namespace ToolBox.Editor
 			tree.Selection.SupportsMultiSelect = false;
 
 			tree.Add("Module Generation", new ModuleGeneration());
-			tree.Add("Game Event Generation", new GameEventGeneration());
+			tree.Add("Global Signal Generation", new GlobalSignalGeneration());
 			tree.Add("Collection Generation", new CollectionGeneration());
 
 			return tree;

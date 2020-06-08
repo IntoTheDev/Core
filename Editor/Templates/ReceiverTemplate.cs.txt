@@ -1,0 +1,4 @@
+﻿namespace ToolBox.Observer
+{
+	public class #SCRIPTNAME#Receiver : TypeReceiver<#SCRIPTNAME#, #SCRIPTNAME#GlobalSignal> { }
+}

@@ -24,7 +24,7 @@ namespace ToolBox.Editor
 				fileName = scriptName.MakeFirstLetterUppercase();
 			}
 
-			[Button("Generate Game Event", ButtonSizes.Medium)]
+			[Button("Generate Global Signal", ButtonSizes.Medium)]
 			protected override void GenerateScript()
 			{
 				SetData();

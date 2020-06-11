@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
-namespace ToolBox.Observer
+namespace ToolBox.Signals.Global
 {
-	[CreateAssetMenu(menuName = "ToolBox/Global Signals/#SCRIPTNAME# Global Signal")]
-	public class #SCRIPTNAME#GlobalSignal : TypeGlobalSignal<#SCRIPTNAME#> { }
+	[CreateAssetMenu(menuName = "ToolBox/Global Signals/#FILENAME# Global Signal")]
+	public class #FILENAME#GlobalSignal : TypeGlobalSignal<#SCRIPTNAME#> { }
 }

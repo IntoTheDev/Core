@@ -50,6 +50,7 @@ namespace ToolBox.Editor
 			protected override string ReplaceText(string path, string fileContent)
 			{
 				fileContent = ReplaceContent(path, fileContent, "#SCRIPTNAME#", scriptName);
+				fileContent = ReplaceContent(path, fileContent, "#FILENAME#", fileName);
 				return fileContent;
 			}
 		}		

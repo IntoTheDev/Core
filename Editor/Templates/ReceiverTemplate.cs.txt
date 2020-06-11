@@ -1,4 +1,6 @@
-﻿namespace ToolBox.Observer
+﻿using ToolBox.Signals.Local;
+
+namespace ToolBox.Signals.Global
 {
-	public class #SCRIPTNAME#Receiver : TypeReceiver<#SCRIPTNAME#, #SCRIPTNAME#GlobalSignal> { }
+	public class #FILENAME#Receiver : TypeReceiver<#SCRIPTNAME#, #FILENAME#GlobalSignal, #FILENAME#LocalSignal> { }
 }

@@ -14,8 +14,7 @@ namespace ToolBox.Editor
 			OdinMenuTree tree = new OdinMenuTree();
 			tree.Selection.SupportsMultiSelect = false;
 
-			tree.Add("Module Generation", new ModuleGeneration());
-			tree.Add("Global Signal Generation", new GlobalSignalGeneration());
+			tree.Add("Global Signal Generation", new SignalGeneration());
 			tree.Add("Collection Generation", new CollectionGeneration());
 
 			return tree;

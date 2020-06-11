@@ -1,0 +1,20 @@
+using ToolBox.Signals.Local;
+using UnityEngine;
+
+public class #FILENAME# : MonoBehaviour, ISignalReceiver
+{
+	private void Awake()
+	{
+
+	}
+
+	private void Update()
+	{
+
+	}
+
+	public void Receive()
+	{
+
+	}
+}

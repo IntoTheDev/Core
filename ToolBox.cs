@@ -123,6 +123,12 @@ namespace ToolBox.Extensions
 		/// </summary>
 		public static T Choose<T>(params T[] p) =>
 			p[UnityEngine.Random.Range(0, p.Length)];
+		
+		public static T Random<T>(this T[] collection)
+		{
+			int index = UnityEngine.Random.Range(0, collection.Length);
+			return collection[index];
+		}
 
 		/// <summary>
 		/// Return true if percent chance success

@@ -1,10 +1,4 @@
-﻿using Sirenix.OdinInspector;
-using System.Collections;
-using System.Collections.Generic;
-using ToolBox.Signals.Global;
-using ToolBox.Signals.Local;
-using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace ToolBox.Test
 {

@@ -1,4 +1,5 @@
 ﻿using Sirenix.OdinInspector;
+using System.Diagnostics;
 using System.IO;
 using ToolBox.Extensions;
 
@@ -22,9 +23,10 @@ namespace ToolBox.Editor
 				names = new string[filesCount];
 
 				fileName = scriptName.MakeFirstLetterUppercase();
+				fileName = fileName.Replace("[]", "Array");
 			}
 
-			[Button("Generate Global Signal", ButtonSizes.Medium)]
+			[Button("Generate Type", ButtonSizes.Medium)]
 			protected override void GenerateScript()
 			{
 				SetData();

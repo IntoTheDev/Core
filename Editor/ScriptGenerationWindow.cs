@@ -1,4 +1,6 @@
 ﻿using Sirenix.OdinInspector;
+using Sirenix.Serialization;
+using System;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
@@ -48,7 +50,7 @@ namespace ToolBox.Editor
 			{
 				AssetDatabase.Refresh();
 				EditorUtility.FocusProjectWindow();
-				Object script = AssetDatabase.LoadAssetAtPath<Object>(path);
+				UnityEngine.Object script = AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(path);
 				Selection.activeObject = script;
 				EditorGUIUtility.PingObject(script);
 				AssetDatabase.OpenAsset(script);

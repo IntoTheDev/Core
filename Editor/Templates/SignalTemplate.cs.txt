@@ -1,0 +1,7 @@
+﻿using UnityEngine;
+
+namespace ToolBox.Signals
+{
+	[CreateAssetMenu(menuName = "ToolBox/Signals/#FILENAME# Signal")]
+	public sealed class #FILENAME#Signal : GenericSignal<#SCRIPTNAME#> { }
+}

@@ -1,7 +1,0 @@
-﻿using UnityEngine;
-
-namespace ToolBox.Signals.Local
-{
-	[System.Serializable]
-	public class #FILENAME#LocalSignal : LocalSignal<#SCRIPTNAME#> { }
-}

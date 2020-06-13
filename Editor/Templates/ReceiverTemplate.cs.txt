@@ -1,6 +1,7 @@
-﻿using ToolBox.Signals.Local;
+﻿using ToolBox.Reactors;
+using UnityEngine;
 
-namespace ToolBox.Signals.Global
+namespace ToolBox.Signals
 {
-	public class #FILENAME#Receiver : TypeReceiver<#SCRIPTNAME#, #FILENAME#GlobalSignal, #FILENAME#LocalSignal> { }
+	public sealed class #FILENAME#Receiver : GenericReceiver<#SCRIPTNAME#, #FILENAME#Signal, I#FILENAME#Reactor, #FILENAME#Reactor> { }
 }

@@ -9,37 +9,37 @@ namespace ToolBox.Editor
 	{
 		public abstract class MultipleGeneration : ScriptGenerationWindow
 		{
-			protected string[] folders = null;
-			protected string[] templates = null;
-			protected string[] names = null;
+			protected string[] _folders = null;
+			protected string[] _templates = null;
+			protected string[] _names = null;
 
-			protected int filesCount = 3;
-			protected string fileName = "";
+			protected int _filesCount = 3;
+			protected string _fileName = "";
 
 			protected override void SetData()
 			{
-				folders = new string[filesCount];
-				templates = new string[filesCount];
-				names = new string[filesCount];
+				_folders = new string[_filesCount];
+				_templates = new string[_filesCount];
+				_names = new string[_filesCount];
 
-				fileName = scriptName.MakeFirstLetterUppercase();
-				fileName = fileName.Replace("[]", "Array");
+				_fileName = _scriptName.MakeFirstLetterUppercase();
+				_fileName = _fileName.Replace("[]", "Array");
 			}
 
 			[Button("Generate Type", ButtonSizes.Medium)]
 			protected override void GenerateScript()
 			{
 				SetData();
-				string[] paths = new string[filesCount];
+				string[] paths = new string[_filesCount];
 
-				for (int i = 0; i < filesCount; i++)
+				for (int i = 0; i < _filesCount; i++)
 					paths[i] = InternalGenerateScript(i);
 
 				SelectFile(paths[0]);
 
 				string InternalGenerateScript(int index)
 				{
-					string path = GenerateFile(folders[index], names[index], templates[index]);
+					string path = GenerateFile(_folders[index], _names[index], _templates[index]);
 
 					string fileContent = File.ReadAllText(path);
 					fileContent = ReplaceText(path, fileContent);
@@ -51,8 +51,8 @@ namespace ToolBox.Editor
 
 			protected override string ReplaceText(string path, string fileContent)
 			{
-				fileContent = ReplaceContent(path, fileContent, "#SCRIPTNAME#", scriptName);
-				fileContent = ReplaceContent(path, fileContent, "#FILENAME#", fileName);
+				fileContent = ReplaceContent(path, fileContent, "#SCRIPTNAME#", _scriptName);
+				fileContent = ReplaceContent(path, fileContent, "#FILENAME#", _fileName);
 				return fileContent;
 			}
 		}		

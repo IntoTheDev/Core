@@ -12,7 +12,7 @@ namespace ToolBox.Editor
 			{
 				SetData();
 
-				string path = GenerateFile(folder, $"{scriptName}Collection", template);
+				string path = GenerateFile(_folder, $"{_scriptName}Collection", _template);
 
 				string fileContent = File.ReadAllText(path);
 				fileContent = ReplaceText(path, fileContent);
@@ -23,14 +23,14 @@ namespace ToolBox.Editor
 
 			protected override string ReplaceText(string path, string fileContent)
 			{
-				fileContent = ReplaceContent(path, fileContent, "#SCRIPTNAME#", scriptName);
+				fileContent = ReplaceContent(path, fileContent, "#SCRIPTNAME#", _scriptName);
 				return fileContent;
 			}
 
 			protected override void SetData()
 			{
-				template = "Assets/ToolBox/Main/Editor/Templates/CollectionTemplate.cs.txt";
-				folder = "Assets/ToolBox/Scriptable Objects Collections";
+				_template = "Assets/ToolBox/Main/Editor/Templates/CollectionTemplate.cs.txt";
+				_folder = "Assets/ToolBox/Scriptable Objects Collections";
 			}
 		}
 	}

@@ -11,20 +11,20 @@ namespace ToolBox.Editor
 	{
 		public class ReactorGeneration : ScriptGenerationWindow
 		{
-			[SerializeField, ValueDropdown(nameof(GetInterfaces))] private string interfaceToInherit = null;
-			[SerializeField] private string parameterName = null;
+			[SerializeField, ValueDropdown(nameof(GetInterfaces))] private string _interfaceToInherit = null;
+			[SerializeField] private string _parameterName = null;
 
 			protected override string ReplaceText(string path, string fileContent)
 			{
-				fileContent = ReplaceContent(path, fileContent, "#SCRIPTNAME#", scriptName);
-				fileContent = ReplaceContent(path, fileContent, "#REACTOR#", interfaceToInherit);
+				fileContent = ReplaceContent(path, fileContent, "#SCRIPTNAME#", _scriptName);
+				fileContent = ReplaceContent(path, fileContent, "#REACTOR#", _interfaceToInherit);
 
-				if (parameterName == string.Empty || parameterName == null)
-					parameterName = "value";
+				if (_parameterName == string.Empty || _parameterName == null)
+					_parameterName = "value";
 
-				fileContent = ReplaceContent(path, fileContent, "#PARAMETER#", parameterName);
+				fileContent = ReplaceContent(path, fileContent, "#PARAMETER#", _parameterName);
 
-				string type = interfaceToInherit.Remove(0, 1);
+				string type = _interfaceToInherit.Remove(0, 1);
 				type = type.Replace("Reactor", "");
 
 				switch (type)
@@ -54,13 +54,13 @@ namespace ToolBox.Editor
 
 			protected override void SetData()
 			{
-				if (interfaceToInherit == null)
-					interfaceToInherit = "IReactor";
+				if (_interfaceToInherit == null)
+					_interfaceToInherit = "IReactor";
 
-				template = interfaceToInherit == "IReactor" 
+				_template = _interfaceToInherit == "IReactor" 
 					? "Assets/ToolBox/Main/Editor/Templates/ReactorTemplate.cs.txt" 
 					: "Assets/ToolBox/Main/Editor/Templates/GenericReactorTemplate.cs.txt";
-				folder = "Assets/ToolBox/Reactors/Generated";
+				_folder = "Assets/ToolBox/Reactors/Generated";
 			}
 
 			private IEnumerable<string> GetInterfaces()

@@ -6,21 +6,21 @@
 		{
 			protected override void SetData()
 			{
-				filesCount = 3;
+				_filesCount = 3;
 
 				base.SetData();
 
-				folders[0] = "Assets/ToolBox/Signals/Signals/Generics";
-				templates[0] = "Assets/ToolBox/Main/Editor/Templates/SignalTemplate.cs.txt";
-				names[0] = $"{fileName}Signal";
+				_folders[0] = "Assets/ToolBox/Signals/Signals/Generics";
+				_templates[0] = "Assets/ToolBox/Main/Editor/Templates/SignalTemplate.cs.txt";
+				_names[0] = $"{_fileName}Signal";
 
-				folders[1] = "Assets/ToolBox/Signals/Receivers/Generics";
-				templates[1] = "Assets/ToolBox/Main/Editor/Templates/ReceiverTemplate.cs.txt";
-				names[1] = $"{fileName}Receiver";
+				_folders[1] = "Assets/ToolBox/Signals/Receivers/Generics";
+				_templates[1] = "Assets/ToolBox/Main/Editor/Templates/ReceiverTemplate.cs.txt";
+				_names[1] = $"{_fileName}Receiver";
 
-				folders[2] = "Assets/ToolBox/Reactors/Generics";
-				templates[2] = "Assets/ToolBox/Main/Editor/Templates/ReactorHelperTemplate.cs.txt";
-				names[2] = $"{fileName}Helper";
+				_folders[2] = "Assets/ToolBox/Reactors/Generics";
+				_templates[2] = "Assets/ToolBox/Main/Editor/Templates/ReactorHelperTemplate.cs.txt";
+				_names[2] = $"{_fileName}Helper";
 			}
 		}
 	}

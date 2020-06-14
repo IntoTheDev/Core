@@ -11,10 +11,10 @@ namespace ToolBox.Editor
 	{
 		public abstract class ScriptGenerationWindow
 		{
-			[SerializeField] protected string scriptName = "Task";
+			[SerializeField] protected string _scriptName = "Task";
 
-			protected string template = "";
-			protected string folder = "";
+			protected string _template = "";
+			protected string _folder = "";
 
 			protected abstract void SetData();
 			protected abstract string ReplaceText(string path, string fileContent);
@@ -29,7 +29,7 @@ namespace ToolBox.Editor
 			protected virtual void GenerateScript()
 			{
 				SetData();
-				string path = GenerateFile(folder, scriptName, template);
+				string path = GenerateFile(_folder, _scriptName, _template);
 
 				string fileContent = File.ReadAllText(path);
 				fileContent = ReplaceText(path, fileContent);

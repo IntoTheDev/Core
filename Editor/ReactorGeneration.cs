@@ -58,9 +58,9 @@ namespace ToolBox.Editor
 					_interfaceToInherit = "IReactor";
 
 				_template = _interfaceToInherit == "IReactor" 
-					? "Assets/ToolBox/Main/Editor/Templates/ReactorTemplate.cs.txt" 
-					: "Assets/ToolBox/Main/Editor/Templates/GenericReactorTemplate.cs.txt";
-				_folder = "Assets/ToolBox/Reactors/Generated";
+					? "Assets/[1]ToolBox/Main/Editor/Templates/ReactorTemplate.cs.txt" 
+					: "Assets/[1]ToolBox/Main/Editor/Templates/GenericReactorTemplate.cs.txt";
+				_folder = "Assets/[1]ToolBox/Reactors/Generated";
 			}
 
 			private IEnumerable<string> GetInterfaces()

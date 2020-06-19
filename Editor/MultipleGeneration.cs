@@ -53,7 +53,6 @@ namespace ToolBox.Editor
 			{
 				fileContent = ReplaceContent(path, fileContent, "#SCRIPTNAME#", _scriptName);
 				fileContent = ReplaceContent(path, fileContent, "#FILENAME#", _fileName);
-				
 				return fileContent;
 			}
 		}		

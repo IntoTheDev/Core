@@ -12,7 +12,15 @@ namespace ToolBox.Editor
 		public class ReactorGeneration : ScriptGenerationWindow
 		{
 			[SerializeField, ValueDropdown(nameof(GetInterfaces))] private string _interfaceToInherit = null;
-			[SerializeField] private string _parameterName = null;
+			[SerializeField] private bool _isSetupable = false;
+			[SerializeField, ShowIf("@this._interfaceToInherit != this._defaultReactor && this._interfaceToInherit != null")] private string _parameterName = null;
+
+			private const string DEFAULT_REACTOR = "Assets/[1]ToolBox/Main/Editor/Templates/ReactorTemplate.cs.txt";
+			private const string SETUPABLE_REACTOR = "Assets/[1]ToolBox/Main/Editor/Templates/SetupableReactorTemplate.cs.txt";
+			private const string GENERIC_DEFAULT_REACTOR = "Assets/[1]ToolBox/Main/Editor/Templates/GenericReactorTemplate.cs.txt";
+			private const string GENERIC_SETUPABLE_REACTOR = "Assets/[1]ToolBox/Main/Editor/Templates/SetupableGenericReactorTemplate.cs.txt";
+
+			private string _defaultReactor = "IReactor";
 
 			protected override string ReplaceText(string path, string fileContent)
 			{
@@ -57,9 +65,19 @@ namespace ToolBox.Editor
 				if (_interfaceToInherit == null)
 					_interfaceToInherit = "IReactor";
 
-				_template = _interfaceToInherit == "IReactor" 
-					? "Assets/[1]ToolBox/Main/Editor/Templates/ReactorTemplate.cs.txt" 
-					: "Assets/[1]ToolBox/Main/Editor/Templates/GenericReactorTemplate.cs.txt";
+				if (_isSetupable)
+				{
+					_template = _interfaceToInherit == "IReactor"
+						? SETUPABLE_REACTOR
+						: GENERIC_SETUPABLE_REACTOR;
+				}
+				else
+				{
+					_template = _interfaceToInherit == "IReactor"
+						? DEFAULT_REACTOR
+						: GENERIC_DEFAULT_REACTOR;
+				}
+
 				_folder = "Assets/[1]ToolBox/Reactors/Generated";
 			}
 
@@ -79,7 +97,9 @@ namespace ToolBox.Editor
 						interfaces.Add(interfaceImplementation.Name);
 				}
 
-				for (int i = interfaces.Count - 1; i >= 0; i--)
+				int count = interfaces.Count;
+
+				for (int i = count - 1; i >= 0; i--)
 				{
 					string item = interfaces[i];
 

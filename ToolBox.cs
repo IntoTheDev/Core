@@ -79,6 +79,33 @@ namespace ToolBox.Extensions
 			int index = UnityEngine.Random.Range(0, collection.Length);
 			return collection[index];
 		}
+		
+		public static int RoundRobin(this int value, int max)
+		{
+			value++;
+
+			if (value == max)
+				value = 0;
+
+			return value;
+		}
+
+		public static int Circle(int value, int min, int max)
+		{
+			if (value == max)
+			{
+				value = 0;
+				return value;
+			}
+
+			if (value == min)
+			{
+				value = max - 1;
+				return value;
+			}
+
+			return value;
+		}
 
 		/// <summary>
 		/// Return true if percent chance success

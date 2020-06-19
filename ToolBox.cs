@@ -94,7 +94,7 @@ namespace ToolBox.Extensions
 		{
 			if (value == max)
 			{
-				value = 0;
+				value = min + 1;
 				return value;
 			}
 

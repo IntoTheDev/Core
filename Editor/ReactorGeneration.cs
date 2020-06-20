@@ -9,7 +9,7 @@ namespace ToolBox.Editor
 {
 	public partial class ToolBoxMenu
 	{
-		public class ReactorGeneration : ScriptGenerationWindow
+		public class ReactorGenerator : ScriptGenerationWindow
 		{
 			[SerializeField, ValueDropdown(nameof(GetInterfaces))] private string _interfaceToInherit = null;
 			[SerializeField] private bool _isSetupable = false;

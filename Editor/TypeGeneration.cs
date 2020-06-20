@@ -2,7 +2,7 @@
 {
 	public partial class ToolBoxMenu
 	{		
-		public class TypeGeneration : MultipleGeneration
+		public class TypeGenerator : MultipleGeneration
 		{
 			protected override void SetData()
 			{

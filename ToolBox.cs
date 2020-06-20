@@ -79,7 +79,7 @@ namespace ToolBox.Extensions
 			int index = UnityEngine.Random.Range(0, collection.Length);
 			return collection[index];
 		}
-		
+
 		public static int RoundRobin(this int value, int max)
 		{
 			value++;
@@ -94,7 +94,7 @@ namespace ToolBox.Extensions
 		{
 			if (value == max)
 			{
-				value = min + 1;
+				value = 0;
 				return value;
 			}
 

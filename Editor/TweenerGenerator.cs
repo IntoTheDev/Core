@@ -1,4 +1,4 @@
-﻿using Sirenix.OdinInspector;
+using Sirenix.OdinInspector;
 using System.IO;
 
 namespace ToolBox.Editor
@@ -12,7 +12,8 @@ namespace ToolBox.Editor
 			{
 				SetData();
 
-				string path = GenerateFile(_folder, $"Tween{_scriptName}", _template);
+				_scriptName = $"Tween{_scriptName}";
+				string path = GenerateFile(_folder, _scriptName, _template);
 
 				string fileContent = File.ReadAllText(path);
 				fileContent = ReplaceText(path, fileContent);

@@ -15,10 +15,10 @@ namespace ToolBox.Editor
 			[SerializeField] private bool _isSetupable = false;
 			[SerializeField, ShowIf("@this._interfaceToInherit != this._defaultReactor && this._interfaceToInherit != null")] private string _parameterName = null;
 
-			private const string DEFAULT_REACTOR = "Assets/[1]ToolBox/Main/Editor/Templates/ReactorTemplate.cs.txt";
-			private const string SETUPABLE_REACTOR = "Assets/[1]ToolBox/Main/Editor/Templates/SetupableReactorTemplate.cs.txt";
-			private const string GENERIC_DEFAULT_REACTOR = "Assets/[1]ToolBox/Main/Editor/Templates/GenericReactorTemplate.cs.txt";
-			private const string GENERIC_SETUPABLE_REACTOR = "Assets/[1]ToolBox/Main/Editor/Templates/SetupableGenericReactorTemplate.cs.txt";
+			private const string DEFAULT_REACTOR = "Assets/[1]ToolBox/Core/Editor/Templates/ReactorTemplate.cs.txt";
+			private const string SETUPABLE_REACTOR = "Assets/[1]ToolBox/Core/Editor/Templates/SetupableReactorTemplate.cs.txt";
+			private const string GENERIC_DEFAULT_REACTOR = "Assets/[1]ToolBox/Core/Editor/Templates/GenericReactorTemplate.cs.txt";
+			private const string GENERIC_SETUPABLE_REACTOR = "Assets/[1]ToolBox/Core/Editor/Templates/SetupableGenericReactorTemplate.cs.txt";
 
 			private string _defaultReactor = "IReactor";
 

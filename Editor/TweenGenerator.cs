@@ -5,14 +5,15 @@ namespace ToolBox.Editor
 {
 	public partial class ToolBoxMenu
 	{
-		public class CollectionGeneration : ScriptGenerationWindow
+		public class TweenGenerator : ScriptGenerationWindow
 		{
-			[Button("Generate Collection", ButtonSizes.Medium)]
+			[Button("Generate Tweener", ButtonSizes.Medium)]
 			protected override void GenerateScript()
 			{
 				SetData();
 
-				string path = GenerateFile(_folder, $"{_scriptName}Collection", _template);
+				_scriptName = $"Tween{_scriptName}";
+				string path = GenerateFile(_folder, _scriptName, _template);
 
 				string fileContent = File.ReadAllText(path);
 				fileContent = ReplaceText(path, fileContent);
@@ -29,8 +30,8 @@ namespace ToolBox.Editor
 
 			protected override void SetData()
 			{
-				_template = "Assets/[1]ToolBox/Main/Editor/Templates/CollectionTemplate.cs.txt";
-				_folder = "Assets/[1]ToolBox/Scriptable Objects Collections";
+				_template = "Assets/[1]ToolBox/Core/Editor/Templates/TweenerTemplate.cs.txt";
+				_folder = "Assets/[1]ToolBox/Reactors/Generated/Tweeners";
 			}
 		}
 	}

@@ -7,7 +7,7 @@ namespace ToolBox.Editor
 {
 	public partial class ToolBoxMenu
 	{
-		public abstract class MultipleGeneration : ScriptGenerationWindow
+		public abstract class MultipleGenerator : ScriptGenerationWindow
 		{
 			protected string[] _folders = null;
 			protected string[] _templates = null;

@@ -29,7 +29,7 @@ namespace ToolBox.Editor
 
 			protected override void SetData()
 			{
-				_template = "Assets/[1]ToolBox/Main/Editor/Templates/CollectionTemplate.cs.txt";
+				_template = "Assets/[1]ToolBox/Core/Editor/Templates/CollectionTemplate.cs.txt";
 				_folder = "Assets/[1]ToolBox/Scriptable Objects Collections";
 			}
 		}

@@ -16,7 +16,7 @@ namespace ToolBox.Editor
 
 			tree.Add("Reactor Generation", new ReactorGenerator());
 			tree.Add("Type Generation", new TypeGenerator());
-			tree.Add("Tween Generation", new TweenerGenerator());
+			tree.Add("Tween Generation", new TweenGenerator());
 			tree.Add("Collection Generation", new CollectionGenerator());
 
 			return tree;

@@ -7,7 +7,7 @@ namespace ToolBox.Extensions
 {
 	public static class Extensions
 	{
-		#region Transform Extensions
+		#region Transform Extension
 		public static void ResetTransform(this Transform transform)
 		{
 			transform.position = Vector3.zero;

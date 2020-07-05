@@ -1,0 +1,15 @@
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
+
+namespace ToolBox.Editor
+{
+	public class #SCRIPTNAME#Branch : IBranch
+	{
+		public string Path => "#PATH#/#SCRIPTNAME#";
+
+		public void Setup()
+		{
+			
+		}
+	}
+}

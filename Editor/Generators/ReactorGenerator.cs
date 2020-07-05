@@ -11,7 +11,7 @@ namespace ToolBox.Editor
 	{
 		public class ReactorGenerator : ScriptGenerationWindow
 		{
-			[SerializeField, ValueDropdown(nameof(GetInterfaces))] private string _interfaceToInherit = null;
+			[SerializeField, ValueDropdown(nameof(GetInterfaces))] private string _interfaceToInherit = "IReactor";
 			[SerializeField] private bool _isSetupable = false;
 			[SerializeField, ShowIf("@this._interfaceToInherit != this._defaultReactor && this._interfaceToInherit != null")] private string _parameterName = null;
 

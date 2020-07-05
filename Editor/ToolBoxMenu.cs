@@ -5,8 +5,8 @@ namespace ToolBox.Editor
 {
 	public partial class ToolBoxMenu : OdinMenuEditorWindow
 	{
-		[MenuItem("Window/ToolBox/Menu")]
-		private static void OpenWindow() =>
+		[MenuItem("Window/ToolBox/Generator")]
+		private static void Open() =>
 			GetWindow<ToolBoxMenu>().Show();
 
 		protected override OdinMenuTree BuildMenuTree()
@@ -18,6 +18,7 @@ namespace ToolBox.Editor
 			tree.Add("Type Generation", new TypeGenerator());
 			tree.Add("Tween Generation", new TweenGenerator());
 			tree.Add("Collection Generation", new CollectionGenerator());
+			tree.Add("Branch Generation", new BranchGenerator());
 
 			return tree;
 		}

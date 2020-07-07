@@ -5,6 +5,7 @@ namespace ToolBox.Editor
 {
 	public partial class ToolBoxMenu
 	{
+
 		public class CollectionGenerator : ScriptGenerationWindow
 		{
 			[Button("Generate Collection", ButtonSizes.Medium)]

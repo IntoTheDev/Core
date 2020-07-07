@@ -1,0 +1,20 @@
+﻿using NodeCanvas.Framework;
+using ParadoxNotion.Design;
+using UnityEngine;
+
+namespace ToolBox.Tasks
+{
+	[Category("ToolBox")]
+	public class #SCRIPTNAME# : ConditionTask
+	{
+		protected override string OnInit() 
+		{
+			return null;
+		}
+
+		protected override bool OnCheck()
+		{
+			return true;
+		}
+	}
+}

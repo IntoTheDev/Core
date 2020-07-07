@@ -19,6 +19,7 @@ namespace ToolBox.Editor
 			tree.Add("Tween Generation", new TweenGenerator());
 			tree.Add("Collection Generation", new CollectionGenerator());
 			tree.Add("Branch Generation", new BranchGenerator());
+			tree.Add("Serializer Generation", new SerializerGenerator());
 
 			return tree;
 		}

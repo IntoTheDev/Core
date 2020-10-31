@@ -1,28 +1,39 @@
 ﻿using Sirenix.OdinInspector.Editor;
+using Sirenix.Utilities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using ToolBox.Reactors;
 using UnityEditor;
 
 namespace ToolBox.Editor
 {
-	public partial class ToolBoxMenu : OdinMenuEditorWindow
-	{
-		[MenuItem("Window/ToolBox/Generator")]
-		private static void Open() =>
-			GetWindow<ToolBoxMenu>().Show();
+    public class ToolBoxMenu : OdinMenuEditorWindow
+    {
+        [MenuItem("Window/ToolBox")]
+        private static void Open() =>
+            GetWindow<GameMenu>().Show();
 
-		protected override OdinMenuTree BuildMenuTree()
-		{
-			OdinMenuTree tree = new OdinMenuTree();
-			tree.Selection.SupportsMultiSelect = false;
+        protected override OdinMenuTree BuildMenuTree()
+        {
+            var tree = new OdinMenuTree(supportsMultiSelect: false);
+            IEnumerable<Type> branches = AssemblyUtilities.GetTypes(AssemblyTypeFlags.CustomTypes)
+                .Where(x => x.IsClass && x.InheritsFrom<IBranch>());
 
-			tree.Add("Reactor Generation", new ReactorGenerator());
-			tree.Add("Type Generation", new TypeGenerator());
-			tree.Add("Task Generation", new TaskGenerator());
-			tree.Add("Tween Generation", new TweenGenerator());
-			tree.Add("Branch Generation", new BranchGenerator());
-			tree.Add("Serializer Generation", new SerializerGenerator());
-			tree.Add("Collection Generation", new CollectionGenerator());
+            foreach (Type item in branches)
+            {
+                var obj = Activator.CreateInstance(item);
+                IBranch branch = obj as IBranch;
+                branch.Setup();
+                tree.Add(branch.Path, obj);
+            }
 
-			return tree;
-		}
-	}
+            return tree;
+        }
+    }
+
+    public interface IBranch : ISetupable
+    { 
+        string Path { get; }
+    }
 }

@@ -1,7 +1,0 @@
-﻿using UnityEngine;
-
-namespace ToolBox.Collections
-{
-	[CreateAssetMenu(menuName = "ToolBox/Collections/#SCRIPTNAME# Collection")]
-	public class #SCRIPTNAME#Collection : Collection<#SCRIPTNAME#> { }
-}

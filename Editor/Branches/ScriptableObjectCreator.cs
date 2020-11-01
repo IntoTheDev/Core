@@ -6,7 +6,7 @@ namespace ToolBox.Editor
 {
 	public abstract class ScriptableObjectCreator<T> where T : ScriptableObject
 	{
-		[SerializeField] private string _assetName = "Pool";
+		[SerializeField] private string _assetName = "Asset";
 		[SerializeField, FolderPath, OnValueChanged(nameof(OnPathChange))] private string _path = "";
 
 		private string _saveKey = "";

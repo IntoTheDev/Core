@@ -1,4 +1,5 @@
 ﻿using Sirenix.OdinInspector;
+using Sirenix.OdinInspector.Editor;
 using UnityEditor;
 using UnityEngine;
 
@@ -11,7 +12,7 @@ namespace ToolBox.Editor
 
 		private string _saveKey = "";
 
-		public virtual void Setup()
+		public virtual void Setup(OdinMenuTree tree)
 		{
 			_saveKey = $"Creator{GetType()}";
 			_path = EditorPrefs.GetString(_saveKey, "");

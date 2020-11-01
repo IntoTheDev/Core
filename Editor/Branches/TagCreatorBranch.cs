@@ -1,4 +1,5 @@
 using Sirenix.OdinInspector;
+using Sirenix.OdinInspector.Editor;
 using System;
 using ToolBox.Tags;
 using UnityEditor;
@@ -24,7 +25,7 @@ namespace ToolBox.Editor
 
 		public string Path => "ToolBox/Tag Creator";
 
-		public void Setup()
+		public void Setup(OdinMenuTree tree)
 		{
 			_tagPath = EditorPrefs.GetString(TAG_SAVE_KEY, "");
 			_tagContainerPath = EditorPrefs.GetString(CONTAINER_SAVE_KEY, "");

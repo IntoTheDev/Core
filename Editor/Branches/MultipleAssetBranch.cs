@@ -10,10 +10,9 @@ namespace ToolBox.Editor
 
 		protected abstract string _path { get; }
 
-		public void Setup()
+		public void Setup(OdinMenuTree tree)
 		{
 			var assets = AssetUtilities.GetAllAssetsOfType<T>();
-			var tree = ToolBoxMenu.Tree;
 			var path = _path + "/";
 
 			foreach (var asset in assets)

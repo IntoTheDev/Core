@@ -10,15 +10,13 @@ namespace ToolBox.Editor
 {
 	public class ToolBoxMenu : OdinMenuEditorWindow
 	{
-		public static OdinMenuTree Tree { get; private set; } = null;
-
 		[MenuItem("Window/ToolBox")]
 		private static void Open() =>
 			GetWindow<ToolBoxMenu>().Show();
 
 		protected override OdinMenuTree BuildMenuTree()
 		{
-			Tree = new OdinMenuTree(supportsMultiSelect: false);
+			var tree = new OdinMenuTree(supportsMultiSelect: false);
 			IEnumerable<Type> branches = AssemblyUtilities.GetTypes(AssemblyTypeFlags.CustomTypes)
 				.Where(x => x.IsClass && x.InheritsFrom<IBranch>() && !x.IsAbstract);
 
@@ -26,11 +24,11 @@ namespace ToolBox.Editor
 			{
 				var obj = Activator.CreateInstance(item);
 				IBranch branch = obj as IBranch;
-				branch.Setup();
-				Tree.Add(branch.Path, obj);
+				branch.Setup(tree);
+				tree.Add(branch.Path, obj);
 			}
 
-			return Tree;
+			return tree;
 		}
 	}
 
@@ -38,6 +36,6 @@ namespace ToolBox.Editor
 	{
 		string Path { get; }
 
-		void Setup();
+		void Setup(OdinMenuTree tree);
 	}
 }

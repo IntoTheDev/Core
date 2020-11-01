@@ -1,5 +1,4 @@
-using Sirenix.OdinInspector;
-using ToolBox.Pools;
+﻿using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
 
@@ -35,10 +34,5 @@ namespace ToolBox.Editor
 
 		private void OnPathChange() =>
 			EditorPrefs.SetString(_saveKey, _path);
-	}
-
-	public class GlobalPoolCreatorBranch : ScriptableObjectCreator<GlobalPool>, IBranch
-	{
-		public string Path => "ToolBox/Global Pool Creator";
 	}
 }

@@ -5,6 +5,6 @@ namespace ToolBox.Editor
 {
 	public class PoolCreatorBranch : ScriptableObjectCreator<Pool>, IBranch
 	{
-		public string Path => "ToolBox/Pool Creator";
+		public string Path => "ToolBox/Creators/Pool Creator";
 	}
 }

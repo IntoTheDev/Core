@@ -1,9 +1,7 @@
 ﻿using Sirenix.OdinInspector.Editor;
 using Sirenix.Utilities;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using ToolBox.Pools;
 using UnityEditor;
 
 namespace ToolBox.Editor
@@ -16,14 +14,15 @@ namespace ToolBox.Editor
 
 		protected override OdinMenuTree BuildMenuTree()
 		{
-			var tree = new OdinMenuTree(supportsMultiSelect: false);
-			IEnumerable<Type> branches = AssemblyUtilities.GetTypes(AssemblyTypeFlags.CustomTypes)
-				.Where(x => x.IsClass && x.InheritsFrom<IBranch>() && !x.IsAbstract);
+			var tree = new OdinMenuTree();
+			var branches = AssemblyUtilities.GetTypes(AssemblyTypeFlags.CustomTypes)
+				.Where(x => x.InheritsFrom<IBranch>() && !x.IsAbstract);
 
 			foreach (Type item in branches)
 			{
 				var obj = Activator.CreateInstance(item);
-				IBranch branch = obj as IBranch;
+				var branch = obj as IBranch;
+
 				branch.Setup(tree);
 				tree.Add(branch.Path, obj);
 			}

@@ -19,7 +19,7 @@ namespace ToolBox.Editor
 		}
 
 		[Button(ButtonSizes.Medium)]
-		private void CreatePool()
+		private void CreateAsset()
 		{
 			var asset = ScriptableObject.CreateInstance<T>();
 			asset.name = _assetName;
@@ -27,6 +27,7 @@ namespace ToolBox.Editor
 			path = AssetDatabase.GenerateUniqueAssetPath(path);
 			AssetDatabase.CreateAsset(asset, path);
 			AssetDatabase.SaveAssets();
+			AssetDatabase.Refresh();
 
 			EditorUtility.FocusProjectWindow();
 

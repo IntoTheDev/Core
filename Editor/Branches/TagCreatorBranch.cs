@@ -4,6 +4,6 @@ namespace ToolBox.Editor
 {
 	public class TagCreatorBranch : ScriptableObjectCreator<Tag>, IBranch
 	{
-		public string Path => "ToolBox/Tag Creator";
+		public string Path => "ToolBox/Creators/Tag Creator";
 	}
 }

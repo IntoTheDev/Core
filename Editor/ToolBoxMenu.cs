@@ -1,4 +1,4 @@
-﻿using Sirenix.OdinInspector.Editor;
+using Sirenix.OdinInspector.Editor;
 using Sirenix.Utilities;
 using System;
 using System.Linq;

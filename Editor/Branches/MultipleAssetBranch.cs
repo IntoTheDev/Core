@@ -1,5 +1,6 @@
 ﻿using Sirenix.OdinInspector.Editor;
 using Sirenix.Utilities.Editor;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace ToolBox.Editor
@@ -12,11 +13,14 @@ namespace ToolBox.Editor
 
 		public void Setup(OdinMenuTree tree)
 		{
-			var assets = AssetUtilities.GetAllAssetsOfType<T>();
+			var assets = FilterAssets(AssetUtilities.GetAllAssetsOfType<T>());
 			var path = _path + "/";
 
 			foreach (var asset in assets)
 				tree.AddObjectAtPath(path + asset.name, asset);
 		}
+
+		protected virtual IEnumerable<ScriptableObject> FilterAssets(IEnumerable<ScriptableObject> assets) =>
+			assets;
 	}
 }

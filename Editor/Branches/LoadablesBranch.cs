@@ -7,7 +7,7 @@ namespace ToolBox.Editor
 {
 	public class LoadablesBranch : MultipleAssetBranch<ScriptableObject>
 	{
-		protected override string _path => "ToolBox/Assets/Loadables";
+		protected override string LocalPath => "ToolBox/Assets/Loadables";
 
 		protected override IEnumerable<ScriptableObject> FilterAssets(IEnumerable<ScriptableObject> assets) =>
 			assets.Where(x => x is ILoadable);

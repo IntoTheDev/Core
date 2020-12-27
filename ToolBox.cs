@@ -1,6 +1,5 @@
-﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 namespace ToolBox.Extensions
 {
@@ -12,25 +11,6 @@ namespace ToolBox.Extensions
 			transform.position = Vector3.zero;
 			transform.localRotation = Quaternion.identity;
 			transform.localScale = Vector3.one;
-		}
-		#endregion
-
-		#region Vector3 Extensions
-		public static Vector3 Multiply(this Vector3 vector, float multiplier)
-		{
-			vector.x *= multiplier;
-			vector.y *= multiplier;
-			vector.z *= multiplier;
-
-			return vector;
-		}
-
-		public static Vector2 Multiply(this Vector2 vector, float multiplier)
-		{
-			vector.x *= multiplier;
-			vector.y *= multiplier;
-
-			return vector;
 		}
 		#endregion
 
@@ -51,9 +31,7 @@ namespace ToolBox.Extensions
 			return angle;
 		}
 		#endregion
-		/// <summary>
-		/// Return mouse position in world space
-		/// </summary>
+
 		public static Vector3 MousePositionInWorld(this Camera cam) =>
 			cam.ScreenToWorldPoint(Input.mousePosition);
 
@@ -67,15 +45,18 @@ namespace ToolBox.Extensions
 			return clampPosition;
 		}
 
-		/// <summary>
-		/// Return random element from params
-		/// </summary>
 		public static T Choose<T>(params T[] p) =>
 			p[UnityEngine.Random.Range(0, p.Length)];
 
 		public static T Random<T>(this T[] collection)
 		{
 			int index = UnityEngine.Random.Range(0, collection.Length);
+			return collection[index];
+		}
+
+		public static T Random<T>(this List<T> collection)
+		{
+			int index = UnityEngine.Random.Range(0, collection.Count);
 			return collection[index];
 		}
 
@@ -106,75 +87,8 @@ namespace ToolBox.Extensions
 			return value;
 		}
 
-		/// <summary>
-		/// Return true if percent chance success
-		/// </summary>
 		public static bool PercentChance(float chance) =>
 			UnityEngine.Random.value <= chance;
-
-		#region Tilemap Extensions
-		public static void FixedBoxFill(this Tilemap tilemap, TileBase tile, RectInt rectSize)
-		{
-			for (int cellX = rectSize.x; cellX < rectSize.width; cellX++)
-			{
-				for (int cellY = rectSize.y; cellY < rectSize.height; cellY++)
-				{
-					Vector3Int tilePosition = new Vector3Int(cellX, cellY, 0);
-					tilemap.SetTile(tilePosition, tile);
-				}
-			}
-		}
-
-		public static void FixedBoxFill(this Tilemap tilemap, TileBase[] tiles, RectInt rectSize)
-		{
-			for (int cellX = rectSize.x; cellX < rectSize.width; cellX++)
-			{
-				for (int cellY = rectSize.y; cellY < rectSize.height; cellY++)
-				{
-					Vector3Int tilePosition = new Vector3Int(cellX, cellY, 0);
-					tilemap.SetRandomTile(tilePosition, tiles);
-				}
-			}
-		}
-
-		public static void FixedBoxFill(
-			this Tilemap tilemap,
-			TileBase mainTile,
-			TileBase[] otherTiles,
-			float chancheToOtherTiles,
-			RectInt rectSize)
-		{
-			for (int cellX = rectSize.x; cellX < rectSize.width; cellX++)
-			{
-				for (int cellY = rectSize.y; cellY < rectSize.height; cellY++)
-				{
-					Vector3Int tilePosition = new Vector3Int(cellX, cellY, 0);
-					tilemap.SetRandomMainTile(tilePosition, mainTile, otherTiles, chancheToOtherTiles);
-				}
-			}
-		}
-
-		public static void SetRandomTile(this Tilemap tilemap, Vector3Int position, TileBase[] tiles)
-		{
-			int tileIndex = UnityEngine.Random.Range(0, tiles.Length);
-			TileBase tile = tiles[tileIndex];
-
-			tilemap.SetTile(position, tile);
-		}
-
-		public static void SetRandomMainTile(
-			this Tilemap tilemap,
-			Vector3Int position,
-			TileBase mainTile,
-			TileBase[] otherTiles,
-			float chancheToOtherTiles)
-		{
-			if (PercentChance(chancheToOtherTiles))
-				tilemap.SetRandomTile(position, otherTiles);
-			else
-				tilemap.SetTile(position, mainTile);
-		}
-		#endregion
 
 		public static void Swap<T>(this T[] array, int a, int b)
 		{
@@ -185,15 +99,5 @@ namespace ToolBox.Extensions
 
 		public static string MakeFirstLetterUppercase(this string text) =>
 			text.Substring(0, 1).ToUpper() + text.Substring(1);
-
-		public static void OverlapCircle(Vector2 position, float radius, LayerMask layerMask, Action<Collider2D[]> action)
-		{
-			Collider2D[] colliders = Physics2D.OverlapCircleAll(position, radius, layerMask);
-
-			if (colliders.Length == 0)
-				return;
-
-			action(colliders);
-		}
 	}
 }

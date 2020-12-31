@@ -1,0 +1,10 @@
+namespace ToolBox.StateMachine
+{
+	public class #NAME# : HierarchicalStateMachine
+	{
+		protected override StateMachine Setup()
+		{
+			return null;
+		}
+	}
+}

@@ -14,7 +14,7 @@ namespace ToolBox.Editor
 		[ShowInInspector, ValueDropdown(nameof(GetAssetTypes)), OnValueChanged(nameof(OnTypeChanged))] private Type _assetType = null;
 		[SerializeField] private string _assetName = "Asset";
 		[SerializeField, FolderPath(RequireExistingPath = true), OnValueChanged(nameof(OnPathChange))] private string _path = "";
-		[ShowInInspector, InlineEditor(Expanded = true)] private ScriptableObject _asset = null;
+		[ShowInInspector, InlineEditor(Expanded = true), ShowIf(nameof(_assetType))] private ScriptableObject _asset = null;
 
 		private string _saveKey = "";
 

@@ -1,0 +1,30 @@
+namespace ToolBox.StateMachine
+{
+	public class #NAME# : IState
+	{
+		public void OnEnter()
+		{
+		
+		}
+
+		public void OnExit()
+		{
+
+		}
+
+		public void Tick(float deltaTime)
+		{
+		
+		}
+
+		public void OnResume()
+		{
+
+		}
+
+		public void OnPause()
+		{
+
+		}
+	}
+}

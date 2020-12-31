@@ -2,8 +2,8 @@ using UnityEngine;
 
 namespace ToolBox.Test
 {
-    public class Tester : MonoBehaviour
-    {
+	public class Tester : MonoBehaviour
+	{
 
-    }
+	}
 }

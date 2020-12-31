@@ -1,0 +1,7 @@
+namespace ToolBox.Signals
+{
+	public class Signal#NAME#
+	{
+
+	}
+}

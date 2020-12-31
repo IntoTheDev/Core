@@ -1,0 +1,30 @@
+namespace ToolBox.StateMachine
+{
+	public class #NAME# : ICondition
+	{
+		public void OnEnter()
+		{
+
+		}
+
+		public bool Check(float deltaTime)
+		{
+			return true;
+		}
+
+		public void OnExit()
+		{
+
+		}
+
+		public void OnResume()
+		{
+
+		}
+
+		public void OnPause()
+		{
+
+		}
+	}
+}

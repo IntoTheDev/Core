@@ -1,0 +1,12 @@
+namespace ToolBox.StateMachine
+{
+	public class #NAME# : StateMachine
+	{
+		public #NAME#(IState startState) : base(startState) { }
+
+		protected override void Preconfigure()
+		{
+		
+		}
+	}
+}

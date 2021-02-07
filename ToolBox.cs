@@ -15,7 +15,7 @@ namespace ToolBox.Extensions
 		#endregion
 
 		#region Quaternion Extensions
-		public static Quaternion Rotate(this Quaternion quaternion, Vector3 destination, Vector3 origin, Vector3 axis)
+		public static Quaternion Rotate(Vector3 destination, Vector3 origin, Vector3 axis)
 		{
 			Vector3 difference = destination - origin;
 			float angle = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;

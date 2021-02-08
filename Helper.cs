@@ -102,5 +102,64 @@ namespace ToolBox.Extensions
 
 		public static Vector3 AngleToVector(float angle, Vector3 axis, Vector3 direction) =>
 			Quaternion.AngleAxis(angle, axis) * direction;
+
+		public static Vector3 GetClosest(this IEnumerable<Vector3> positions, Vector3 position)
+		{
+			float bestDistance = float.MaxValue;
+			Vector3 closestPosition = default;
+
+			foreach (var pos in positions)
+			{
+				float distance = Vector3.SqrMagnitude(pos - position);
+
+				if (distance < bestDistance)
+				{
+					closestPosition = pos;
+					bestDistance = distance;
+				}
+			}
+
+			return closestPosition;
+		}
+
+		public static Transform GetClosest(this IEnumerable<Transform> transforms, Vector3 position)
+		{
+			float bestDistance = float.MaxValue;
+			Transform closest = default;
+
+			foreach (var transform in transforms)
+			{
+				var pos = transform.position;
+				float distance = Vector3.SqrMagnitude(pos - position);
+
+				if (distance < bestDistance)
+				{
+					closest = transform;
+					bestDistance = distance;
+				}
+			}
+
+			return closest;
+		}
+
+		public static GameObject GetClosest(this IEnumerable<GameObject> objects, Vector3 position)
+		{
+			float bestDistance = float.MaxValue;
+			GameObject closest = default;
+
+			foreach (var obj in objects)
+			{
+				var pos = obj.transform.position;
+				float distance = Vector3.SqrMagnitude(pos - position);
+
+				if (distance < bestDistance)
+				{
+					closest = obj;
+					bestDistance = distance;
+				}
+			}
+
+			return closest;
+		}
 	}
 }

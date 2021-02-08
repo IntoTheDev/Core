@@ -99,5 +99,8 @@ namespace ToolBox.Extensions
 
 		public static string MakeFirstLetterUppercase(this string text) =>
 			text.Substring(0, 1).ToUpper() + text.Substring(1);
+
+		public static Vector3 AngleToVector(float angle, Vector3 axis, Vector3 direction) =>
+			Quaternion.AngleAxis(angle, axis) * direction;
 	}
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ToolBox.Extensions
 {
-	public static class Extensions
+	public static class Helper
 	{
 		#region Transform Extensions
 		public static void ResetTransform(this Transform transform)

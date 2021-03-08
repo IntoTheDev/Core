@@ -1,6 +1,5 @@
-﻿using Sirenix.OdinInspector;
+using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
@@ -36,7 +35,7 @@ namespace ToolBox.Editor
 			var script = AssetDatabase.LoadAssetAtPath<Object>(filePath);
 			EditorUtility.FocusProjectWindow();
 			Selection.activeObject = script;
-			AssetDatabase.OpenAsset(script);
+			//AssetDatabase.OpenAsset(script);
 		}
 
 		private void OnTemplatesPathChanged() =>
@@ -48,7 +47,7 @@ namespace ToolBox.Editor
 		private void OnSavePathChanged() =>
 			EditorPrefs.SetString($"{_template.name}save_path", _savePath);
 
-		private IEnumerable GetTemplates()
+		private IEnumerable<ValueDropdownItem> GetTemplates()
 		{
 			var assets = AssetDatabase.FindAssets("t:TextAsset", new[] { _templatesPath });
 			var templates = new List<ValueDropdownItem>();

@@ -35,7 +35,7 @@ namespace ToolBox.Editor
 			var script = AssetDatabase.LoadAssetAtPath<Object>(filePath);
 			EditorUtility.FocusProjectWindow();
 			Selection.activeObject = script;
-			//AssetDatabase.OpenAsset(script);
+			AssetDatabase.OpenAsset(script);
 		}
 
 		private void OnTemplatesPathChanged() =>

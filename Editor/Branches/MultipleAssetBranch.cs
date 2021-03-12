@@ -1,26 +1,26 @@
 using Sirenix.OdinInspector.Editor;
 using Sirenix.Utilities.Editor;
-using System.Collections.Generic;
+using System.Reflection;
+using ToolBox.Loader;
 using UnityEngine;
 
 namespace ToolBox.Editor
 {
-	public abstract class MultipleAssetBranch<T> : IBranch where T : ScriptableObject
+	public class MultipleAssetBranch : IBranch
 	{
-		public string Path => LocalPath;
-
-		protected abstract string LocalPath { get; }
+		public string Path => "ToolBox/Assets/";
 
 		public void Setup(OdinMenuTree tree)
 		{
-			var assets = FilterAssets(AssetUtilities.GetAllAssetsOfType<T>());
-			var path = LocalPath + "/";
+			var assets = AssetUtilities.GetAllAssetsOfType<ScriptableObject>();
 
 			foreach (var asset in assets)
-				tree.AddObjectAtPath(path + asset.name, asset);
-		}
+			{
+				var type = asset.GetType();
 
-		protected virtual IEnumerable<ScriptableObject> FilterAssets(IEnumerable<ScriptableObject> assets) =>
-			assets;
+				if (type.GetCustomAttribute<ShowInMenuAttribute>() != null)
+					tree.AddObjectAtPath($"{Path}{type}/{asset.name}", asset);
+			}
+		}
 	}
 }

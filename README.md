@@ -1,4 +1,4 @@
 ### TODO
-- [ ] Git Package
+- [x] Git Package
 - [ ] Dependencies
 - [ ] AppStarter

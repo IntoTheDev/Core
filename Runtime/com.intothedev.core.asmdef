@@ -1,3 +1,16 @@
 {
-	"name": "com.intothedev.core"
+    "name": "com.intothedev.core",
+    "rootNamespace": "",
+    "references": [
+        "com.intothedev.loader"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

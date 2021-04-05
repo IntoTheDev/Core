@@ -2,9 +2,11 @@
     "name": "com.intothedev.core.Editor",
     "rootNamespace": "",
     "references": [
-        "GUID:851a8668baff11c408206f151cfd85fa"
+        "com.intothedev.core"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

@@ -3,14 +3,6 @@
   "version": "1.0.0",
   "displayName": "Core",
   "description": "Core package.",
-  "dependencies": {
-    "com.intothedev.multitags": "1.2.0",
-    "com.intothedev.objectpooling": "1.5.0",
-    "com.intothedev.signals": "1.1.0",
-    "com.intothedev.savesystem": "1.2.0",
-    "com.intothedev.loader": "1.3.0",
-    "com.intothedev.ai": "1.0.0" 
-  },
   "author": 
   {
     "name": "IntoTheDev",

@@ -1,3 +1,4 @@
+﻿#if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 using System.Collections.Generic;
@@ -5,7 +6,7 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-namespace ToolBox.Editor
+namespace ToolBox.Editor.Branches
 {
 	public class ScriptGenerator : IBranch
 	{
@@ -35,7 +36,7 @@ namespace ToolBox.Editor
 			var script = AssetDatabase.LoadAssetAtPath<Object>(filePath);
 			EditorUtility.FocusProjectWindow();
 			Selection.activeObject = script;
-			AssetDatabase.OpenAsset(script);
+			//AssetDatabase.OpenAsset(script);
 		}
 
 		private void OnTemplatesPathChanged() =>
@@ -69,3 +70,4 @@ namespace ToolBox.Editor
 		}
 	}
 }
+#endif

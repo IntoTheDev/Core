@@ -1,7 +1,9 @@
+#if ODIN_INSPECTOR
 using Sirenix.OdinInspector.Editor;
 using Sirenix.Utilities;
 using System;
 using System.Linq;
+using ToolBox.Editor.Branches;
 using UnityEditor;
 
 namespace ToolBox.Editor
@@ -30,11 +32,5 @@ namespace ToolBox.Editor
 			return tree;
 		}
 	}
-
-	public interface IBranch
-	{
-		string Path { get; }
-
-		void Setup(OdinMenuTree tree);
-	}
 }
+#endif

@@ -1,0 +1,21 @@
+{
+  "name": "com.intothedev.core",
+  "version": "1.0.0",
+  "displayName": "Core",
+  "description": "Core package.",
+  "dependencies": {
+    "com.intothedev.multitags": "https://github.com/IntoTheDev/MultiTag-System-for-Unity.git",
+    "com.intothedev.objectpooling": "https://github.com/IntoTheDev/Object-Pooling-for-Unity.git",
+    "com.intothedev.signals": "https://github.com/IntoTheDev/Signals.git",
+    "com.intothedev.savesystem": "https://github.com/IntoTheDev/Save-System-for-Unity.git",
+    "com.intothedev.loader": "https://github.com/IntoTheDev/Scriptable-Object-Loader.git",
+    "com.intothedev.ai": "https://github.com/IntoTheDev/Hierarchical-State-Machine-for-Unity.git"
+  },
+  "author": 
+  {
+    "name": "IntoTheDev",
+    "email": "indraayy322@gmail.com",
+    "url": "https://github.com/IntoTheDev"
+  },
+  "type": "tool"
+}

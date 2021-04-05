@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ToolBox.Test
+namespace ToolBox.Runtime.Testing
 {
 	public class Tester : MonoBehaviour
 	{

@@ -1,10 +1,11 @@
+#if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-namespace ToolBox.Editor
+namespace ToolBox.Editor.Branches
 {
 	public class SpriteAnimationCreatorBranch : IBranch
 	{
@@ -70,3 +71,4 @@ namespace ToolBox.Editor
 		}
 	}
 }
+#endif

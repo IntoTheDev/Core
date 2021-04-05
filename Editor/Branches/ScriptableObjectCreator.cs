@@ -1,3 +1,4 @@
+#if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 using Sirenix.Utilities;
@@ -7,7 +8,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-namespace ToolBox.Editor
+namespace ToolBox.Editor.Branches
 {
 	public class ScriptableObjectCreator : IBranch
 	{
@@ -58,3 +59,4 @@ namespace ToolBox.Editor
 			EditorPrefs.SetString(_saveKey, _path);
 	}
 }
+#endif

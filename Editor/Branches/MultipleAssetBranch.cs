@@ -1,10 +1,11 @@
+#if ODIN_INSPECTOR
 using Sirenix.OdinInspector.Editor;
 using Sirenix.Utilities.Editor;
 using System.Reflection;
-using ToolBox.Loader;
+using ToolBox.Runtime.Attributes;
 using UnityEngine;
 
-namespace ToolBox.Editor
+namespace ToolBox.Editor.Branches
 {
 	public class MultipleAssetBranch : IBranch
 	{
@@ -24,3 +25,4 @@ namespace ToolBox.Editor
 		}
 	}
 }
+#endif

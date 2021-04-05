@@ -5,7 +5,7 @@
   "description": "Core package.",
   "dependencies":
   {
-    "addressables": "1.17.15"
+    "com.unity.addressables": "1.17.15"
   },
   "author": 
   {

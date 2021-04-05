@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "displayName": "Core",
   "description": "Core package.",
+  "dependencies":
+  {
+    "addressables": "1.17.15"
+  },
   "author": 
   {
     "name": "IntoTheDev",

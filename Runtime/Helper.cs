@@ -1,4 +1,7 @@
 using System.Collections.Generic;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace ToolBox.Runtime.Extensions
@@ -175,5 +178,24 @@ namespace ToolBox.Runtime.Extensions
 
 			return closest;
 		}
+
+#if UNITY_EDITOR
+		public static List<T> GetAllAssetsOfType<T>() where T : Object
+		{
+			var assets = new List<T>();
+			string[] guids = AssetDatabase.FindAssets($"t:{typeof(T)}");
+
+			for (int i = 0; i < guids.Length; i++)
+			{
+				string assetPath = AssetDatabase.GUIDToAssetPath(guids[i]);
+				var asset = AssetDatabase.LoadAssetAtPath<T>(assetPath);
+
+				if (asset != null)
+					assets.Add(asset);
+			}
+
+			return assets;
+		}
+#endif
 	}
 }

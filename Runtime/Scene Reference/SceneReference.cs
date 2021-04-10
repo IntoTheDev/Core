@@ -11,12 +11,12 @@ using UnityEngine;
 #if ODIN_INSPECTOR
 [Required, AssetSelector]
 #endif
-public class SceneReference : ScriptableObject, ILoadable
+public class SceneReference : ScriptableObject, ILoadable, IInitializableBeforeBuild
 {
-#if UNITY_EDITOR
 #if ODIN_INSPECTOR
 	[Required, AssetSelector]
 #endif
+#if UNITY_EDITOR
 	[SerializeField] private SceneAsset _scene = null;
 #endif
 
@@ -34,8 +34,10 @@ public class SceneReference : ScriptableObject, ILoadable
 		}
 	}
 
+	public void Init()
+	{
 #if UNITY_EDITOR
-	public void Init() =>
 		_name = _scene.name;
 #endif
+	}
 }

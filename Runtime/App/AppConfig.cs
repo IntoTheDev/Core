@@ -8,7 +8,7 @@ namespace ToolBox.Runtime
 	[ShowInMenu]
 	public class AppConfig : ScriptableObject, ILoadable
 	{
-		[SerializeField] private SceneReference[] _additiveScenes = null;
+		[SerializeField] private SceneReference[] _additiveScenes = new SceneReference[0];
 
 		public void Init()
 		{

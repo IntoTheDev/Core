@@ -117,6 +117,16 @@ namespace ToolBox.Runtime.Extensions
 
 		public static Vector3 AngleToVector(float angle, Vector3 axis, Vector3 direction) =>
 			Quaternion.AngleAxis(angle, axis) * direction;
+		
+		public static float VectorToAngle(float y, float x)
+		{
+			float angle = Mathf.Atan2(y, x) * Mathf.Rad2Deg;
+
+			if (y < 0f)
+				angle += 360f;
+
+			return angle;
+		}
 
 		public static Vector3 GetClosest(this IEnumerable<Vector3> positions, Vector3 position)
 		{

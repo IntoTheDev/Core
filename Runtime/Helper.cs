@@ -1,8 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 using UnityEngine;
 
 namespace ToolBox.Runtime.Extensions
@@ -179,22 +176,5 @@ namespace ToolBox.Runtime.Extensions
 
 			return closest;
 		}
-
-		// TODO: Move to separate file
-#if UNITY_EDITOR
-		public static List<T> GetAllAssetsOfType<T>() where T : Object
-		{
-			var paths = AssetDatabase.GetAllAssetPaths();
-			var assets = new List<T>();
-
-			foreach (var path in paths)
-			{
-				var asset = AssetDatabase.LoadAssetAtPath<T>(path);
-				assets.Add(asset);
-			}
-
-			return assets;
-		}
-#endif
 	}
 }

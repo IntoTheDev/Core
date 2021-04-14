@@ -18,6 +18,9 @@ namespace ToolBox.Runtime.Lookups
 		[SerializeField, HideInInspector] private K[] _keys = new K[0];
 		[SerializeField, HideInInspector] private V[] _values = new V[0];
 
+		public IReadOnlyCollection<K> Keys => Array.AsReadOnly(_keys);
+		public V[] Values => _values;
+
 		public V Get(K key)
 		{
 			for (int i = 0; i < _keys.Length; i++)

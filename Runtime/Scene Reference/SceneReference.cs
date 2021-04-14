@@ -9,7 +9,7 @@ using UnityEngine;
 
 [CreateAssetMenu(menuName = "ToolBox/Scene Reference")]
 #if ODIN_INSPECTOR
-[Required, AssetSelector]
+[Required, AssetSelector, ShowInMenu]
 #endif
 public class SceneReference : ScriptableObject, ILoadable, IInitializableBeforeBuild
 {
@@ -22,7 +22,7 @@ public class SceneReference : ScriptableObject, ILoadable, IInitializableBeforeB
 
 	[SerializeField, HideInInspector] private string _name = string.Empty;
 
-	public string Value
+	public string Name
 	{
 		get
 		{
@@ -34,10 +34,9 @@ public class SceneReference : ScriptableObject, ILoadable, IInitializableBeforeB
 		}
 	}
 
-	public void Init()
-	{
+	public void Init() =>
 #if UNITY_EDITOR
 		_name = _scene.name;
 #endif
-	}
+
 }

@@ -3,7 +3,7 @@ using ToolBox.Runtime.Attributes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace ToolBox.Runtime
+namespace ToolBox.Runtime.Utilities
 {
 	[ShowInMenu]
 	public class AppConfig : ScriptableObject, ILoadable
@@ -13,7 +13,7 @@ namespace ToolBox.Runtime
 		public void Init()
 		{
 			foreach (var scene in _additiveScenes)
-				SceneManager.LoadSceneAsync(scene.Value, LoadSceneMode.Additive);
+				SceneManager.LoadSceneAsync(scene.Name, LoadSceneMode.Additive);
 		}
 	}
 }

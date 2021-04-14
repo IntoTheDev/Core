@@ -5,27 +5,30 @@ using ToolBox.Loader.Editor;
 #endif
 using UnityEngine;
 
-[Serializable]
-public sealed class AssetLookup<K, V> : Lookup<K, V> where K : ScriptableObject
+namespace ToolBox.Runtime.Lookups
 {
-	protected override K[] GetKeys()
+	[Serializable]
+	public sealed class AssetLookup<K, V> : Lookup<K, V> where K : ScriptableObject
 	{
-#if UNITY_EDITOR
-		var keys = EditorStorage.GetAllAssetsOfType<K>().ToArray();
-#else
-		var keys = new K[0];
-#endif
-		return keys;
-	}
-
-	protected override void Process(SerializedDictionary<K, V> lookup)
-	{
-		for (int i = lookup.Count - 1; i >= 0; i--)
+		protected override K[] GetKeys()
 		{
-			var key = lookup.Keys.ElementAt(i);
+#if UNITY_EDITOR
+			var keys = EditorStorage.GetAllAssetsOfType<K>().ToArray();
+#else
+			var keys = new K[0];
+#endif
+			return keys;
+		}
 
-			if (key == null)
-				lookup.Remove(key);
+		protected override void Process(SerializedDictionary<K, V> lookup)
+		{
+			for (int i = lookup.Count - 1; i >= 0; i--)
+			{
+				var key = lookup.Keys.ElementAt(i);
+
+				if (key == null)
+					lookup.Remove(key);
+			}
 		}
 	}
 }

@@ -1,7 +1,7 @@
 using ToolBox.Loader;
 using UnityEngine;
 
-namespace ToolBox.Runtime.Utilities
+namespace ToolBox.Runtime.App
 {
 	public static class AppStarter
 	{

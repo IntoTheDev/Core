@@ -1,9 +1,10 @@
 ﻿using ToolBox.Loader;
 using ToolBox.Runtime.Attributes;
+using ToolBox.Runtime.Utilities;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace ToolBox.Runtime.Utilities
+namespace ToolBox.Runtime.App
 {
 	[ShowInMenu]
 	public class AppConfig : ScriptableObject, ILoadable

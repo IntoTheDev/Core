@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace ToolBox.Editor.Branches
 {
-	public class SpriteAnimationCreatorBranch : IBranch
+	public class SpriteAnimationCreator : IBranch
 	{
 		[ShowInInspector, Required, AssetSelector] private Texture2D _texture = null;
 		[ShowInInspector, Min(0f)] private float _frameRate = 60f;

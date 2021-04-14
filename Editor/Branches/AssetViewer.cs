@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace ToolBox.Editor.Branches
 {
-	public class MultipleAssetBranch : IBranch
+	public class AssetViewer : IBranch
 	{
 		public string Path => "ToolBox/Assets/";
 

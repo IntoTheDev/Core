@@ -9,7 +9,7 @@ namespace ToolBox.Editor.Branches
 {
 	public class AssetViewer : IBranch
 	{
-		public string Path => "ToolBox/Assets/";
+		public string Path => "ToolBox/ASSETS/";
 
 		public void Setup(OdinMenuTree tree)
 		{

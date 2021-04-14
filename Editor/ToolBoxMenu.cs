@@ -20,7 +20,7 @@ namespace ToolBox.Editor
 			var branches = AssemblyUtilities.GetTypes(AssemblyTypeFlags.CustomTypes)
 				.Where(x => x.InheritsFrom<IBranch>() && !x.IsAbstract);
 
-			foreach (Type item in branches)
+			foreach (var item in branches)
 			{
 				var obj = Activator.CreateInstance(item);
 				var branch = obj as IBranch;

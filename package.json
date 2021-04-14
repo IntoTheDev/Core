@@ -1,12 +1,8 @@
 {
   "name": "com.intothedev.core",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "displayName": "Core",
   "description": "Core package.",
-  "dependencies":
-  {
-    "com.unity.addressables": "1.17.15"
-  },
   "author": 
   {
     "name": "IntoTheDev",

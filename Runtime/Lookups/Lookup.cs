@@ -6,57 +6,60 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-[Serializable]
-public abstract class Lookup<K, V> : ISerializationCallbackReceiver
+namespace ToolBox.Runtime.Lookups
 {
+	[Serializable]
+	public abstract class Lookup<K, V> : ISerializationCallbackReceiver
+	{
 #if ODIN_INSPECTOR
-	[DictionaryDrawerSettings(IsReadOnly = true), HideLabel]
+		[DictionaryDrawerSettings(IsReadOnly = true), HideLabel]
 #endif
-	[SerializeField] private SerializedDictionary<K, V> _lookup = new SerializedDictionary<K, V>();
-	[SerializeField, HideInInspector] private K[] _keys = new K[0];
-	[SerializeField, HideInInspector] private V[] _values = new V[0];
+		[SerializeField] private SerializedDictionary<K, V> _lookup = new SerializedDictionary<K, V>();
+		[SerializeField, HideInInspector] private K[] _keys = new K[0];
+		[SerializeField, HideInInspector] private V[] _values = new V[0];
 
-	public V Get(K key)
-	{
-		for (int i = 0; i < _keys.Length; i++)
+		public V Get(K key)
 		{
-			if (EqualityComparer<K>.Default.Equals(key, _keys[i]))
-				return _values[i];
+			for (int i = 0; i < _keys.Length; i++)
+			{
+				if (EqualityComparer<K>.Default.Equals(key, _keys[i]))
+					return _values[i];
+			}
+
+			return default;
 		}
 
-		return default;
-	}
-
-	public void Set(K key, V value)
-	{
-		for (int i = 0; i < _keys.Length; i++)
+		public void Set(K key, V value)
 		{
-			if (EqualityComparer<K>.Default.Equals(key, _keys[i]))
-				_values[i] = value;
+			for (int i = 0; i < _keys.Length; i++)
+			{
+				if (EqualityComparer<K>.Default.Equals(key, _keys[i]))
+					_values[i] = value;
+			}
 		}
-	}
 
-	public void OnBeforeSerialize()
-	{
+		public void OnBeforeSerialize()
+		{
 #if UNITY_EDITOR
-		var keys = GetKeys();
+			var keys = GetKeys();
 
-		foreach (var key in keys)
-		{
-			if (!_lookup.ContainsKey(key))
-				_lookup.Add(key, default);
+			foreach (var key in keys)
+			{
+				if (!_lookup.ContainsKey(key))
+					_lookup.Add(key, default);
+			}
+
+			Process(_lookup);
+
+			_keys = _lookup.Keys.ToArray();
+			_values = _lookup.Values.ToArray();
+#endif
 		}
 
-		Process(_lookup);
+		public void OnAfterDeserialize() { }
 
-		_keys = _lookup.Keys.ToArray();
-		_values = _lookup.Values.ToArray();
-#endif
+		protected abstract K[] GetKeys();
+
+		protected abstract void Process(SerializedDictionary<K, V> lookup);
 	}
-
-	public void OnAfterDeserialize() { }
-
-	protected abstract K[] GetKeys();
-
-	protected abstract void Process(SerializedDictionary<K, V> lookup);
 }

@@ -37,10 +37,11 @@ namespace ToolBox.Runtime.Utilities
 			}
 		}
 
-		public void Init() =>
+		public void Init()
+		{
 #if UNITY_EDITOR
-		_name = _scene.name;
+			_name = _scene.name;
 #endif
-
+		}
 	}
 }

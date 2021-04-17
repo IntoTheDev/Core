@@ -6,7 +6,7 @@ namespace ToolBox.Runtime.Extensions
 {
 	public static class Helper
 	{
-		public static Vector3 AdjustScale(this Transform transform, float angle)
+		public static Vector3 AdjustScale2D(this Transform transform, float angle)
 		{
 			var scale = transform.localScale;
 			scale.y = angle <= 90f && angle >= -90f ? 1f : -1f;
@@ -14,16 +14,6 @@ namespace ToolBox.Runtime.Extensions
 			return scale;
 		}
 
-		#region Transform Extensions
-		public static void ResetTransform(this Transform transform)
-		{
-			transform.position = Vector3.zero;
-			transform.localRotation = Quaternion.identity;
-			transform.localScale = Vector3.one;
-		}
-		#endregion
-
-		#region Quaternion Extensions
 		public static Quaternion Rotate(Vector3 destination, Vector3 origin, Vector3 axis)
 		{
 			Vector3 difference = destination - origin;
@@ -39,10 +29,6 @@ namespace ToolBox.Runtime.Extensions
 
 			return angle;
 		}
-		#endregion
-
-		public static Vector3 MousePositionInWorld(this Camera cam) =>
-			cam.ScreenToWorldPoint(Input.mousePosition);
 
 		public static Vector3 Clamp(this Camera camera, Vector3 position)
 		{
@@ -75,33 +61,6 @@ namespace ToolBox.Runtime.Extensions
 			return Mathf.Lerp(oMin, oMax, t);
 		}
 
-		public static int RoundRobin(this int value, int max)
-		{
-			value++;
-
-			if (value == max)
-				value = 0;
-
-			return value;
-		}
-
-		public static int Circle(int value, int min, int max)
-		{
-			if (value == max)
-			{
-				value = min + 1;
-				return value;
-			}
-
-			if (value == min)
-			{
-				value = max - 1;
-				return value;
-			}
-
-			return value;
-		}
-
 		public static bool PercentChance(float chance) =>
 			UnityEngine.Random.value <= chance;
 
@@ -117,16 +76,9 @@ namespace ToolBox.Runtime.Extensions
 
 		public static Vector3 AngleToVector(float angle, Vector3 axis, Vector3 direction) =>
 			Quaternion.AngleAxis(angle, axis) * direction;
-		
-		public static float VectorToAngle(float y, float x)
-		{
-			float angle = Mathf.Atan2(y, x) * Mathf.Rad2Deg;
 
-			if (y < 0f)
-				angle += 360f;
-
-			return angle;
-		}
+		public static float VectorToAngle(float y, float x) =>
+			Mathf.Atan2(y, x) * Mathf.Rad2Deg;
 
 		public static Vector3 GetClosest(this IEnumerable<Vector3> positions, Vector3 position)
 		{

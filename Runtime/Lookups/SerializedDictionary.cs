@@ -1,9 +1,5 @@
-﻿#if ODIN_INSPECTOR
-#endif
 using System;
 using System.Collections.Generic;
-#if UNITY_EDITOR
-#endif
 using UnityEngine;
 
 namespace ToolBox.Runtime.Lookups

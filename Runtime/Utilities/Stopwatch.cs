@@ -1,6 +1,6 @@
 ﻿namespace ToolBox.Runtime.Utilities
 {
-	public class Stopwatch : BaseStopwatch
+	public sealed class Stopwatch : BaseStopwatch
 	{
 		protected override float Time => UnityEngine.Time.time;
 

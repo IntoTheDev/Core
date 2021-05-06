@@ -21,14 +21,14 @@ namespace ToolBox.Runtime.Utilities
 				return _isEllapsed;
 			}
 		}
+		
+		public BaseStopwatch(float duration) =>
+			_duration = duration;
 
 		public void Start()
 		{
 			_timestamp = Time;
 			_isEllapsed = false;
 		}
-
-		public BaseStopwatch(float duration) =>
-			_duration = duration;
 	}
 }

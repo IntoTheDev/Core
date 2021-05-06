@@ -22,7 +22,7 @@ namespace ToolBox.Runtime.Utilities
 			}
 		}
 
-		public void Reset()
+		public void Start()
 		{
 			_timestamp = Time;
 			_isEllapsed = false;

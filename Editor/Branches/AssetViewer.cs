@@ -18,7 +18,8 @@ namespace ToolBox.Editor.Branches
 			foreach (var asset in assets)
 			{
 				var type = asset.GetType();
-
+				
+				// TODO: Remove namespace from path
 				if (type.GetCustomAttribute<ShowInMenuAttribute>() != null)
 					tree.AddObjectAtPath($"{Path}{type}/{asset.name}", asset);
 			}

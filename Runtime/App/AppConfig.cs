@@ -16,5 +16,7 @@ namespace ToolBox.Runtime.App
 			foreach (var scene in _additiveScenes)
 				SceneManager.LoadSceneAsync(scene.Name, LoadSceneMode.Additive);
 		}
+		
+		public void Load() { }
 	}
 }

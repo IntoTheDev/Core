@@ -36,6 +36,8 @@ namespace ToolBox.Runtime.Utilities
 #endif
 			}
 		}
+		
+		public void Load() { }
 
 		public void Init()
 		{

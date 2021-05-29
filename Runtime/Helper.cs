@@ -16,7 +16,7 @@ namespace ToolBox.Runtime.Extensions
 
 		public static Quaternion Rotate(Vector3 destination, Vector3 origin, Vector3 axis)
 		{
-			Vector3 difference = destination - origin;
+			var difference = destination - origin;
 			float angle = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
 
 			return Quaternion.AngleAxis(angle, axis);
@@ -24,7 +24,7 @@ namespace ToolBox.Runtime.Extensions
 
 		public static float Rotate(Vector3 destination, Vector3 origin)
 		{
-			Vector3 difference = destination - origin;
+			var difference = destination - origin;
 			float angle = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
 
 			return angle;
@@ -32,7 +32,7 @@ namespace ToolBox.Runtime.Extensions
 
 		public static Vector3 Clamp(this Camera camera, Vector3 position)
 		{
-			Vector3 clampPosition = camera.WorldToViewportPoint(position);
+			var clampPosition = camera.WorldToViewportPoint(position);
 			clampPosition.x = Mathf.Clamp01(clampPosition.x);
 			clampPosition.y = Mathf.Clamp01(clampPosition.y);
 			clampPosition = camera.ViewportToWorldPoint(clampPosition);
@@ -66,7 +66,7 @@ namespace ToolBox.Runtime.Extensions
 
 		public static void Swap<T>(this T[] array, int a, int b)
 		{
-			T x = array[a];
+			var x = array[a];
 			array[a] = array[b];
 			array[b] = x;
 		}
@@ -80,63 +80,42 @@ namespace ToolBox.Runtime.Extensions
 		public static float VectorToAngle(float y, float x) =>
 			Mathf.Atan2(y, x) * Mathf.Rad2Deg;
 
-		public static Vector3 GetClosest(this IEnumerable<Vector3> positions, Vector3 position)
+		public static T GetClosest<T>(this IEnumerable<T> targets, Vector3 position) where T : Component
 		{
 			float bestDistance = float.MaxValue;
-			Vector3 closestPosition = default;
+			T closest = null;
 
-			foreach (var pos in positions)
+			foreach (var target in targets)
 			{
-				float distance = Vector3.SqrMagnitude(pos - position);
+				float distance = Vector3.SqrMagnitude(target.transform.position - position);
 
 				if (distance < bestDistance)
 				{
-					closestPosition = pos;
+					closest = target;
 					bestDistance = distance;
 				}
 			}
 
-			return closestPosition;
+			return closest;		
 		}
-
-		public static Transform GetClosest(this IEnumerable<Transform> transforms, Vector3 position)
+		
+		public static GameObject GetClosest(this IEnumerable<GameObject> targets, Vector3 position)
 		{
 			float bestDistance = float.MaxValue;
-			Transform closest = default;
+			GameObject closest = null;
 
-			foreach (var transform in transforms)
+			foreach (var target in targets)
 			{
-				var pos = transform.position;
-				float distance = Vector3.SqrMagnitude(pos - position);
+				float distance = Vector3.SqrMagnitude(target.transform.position - position);
 
 				if (distance < bestDistance)
 				{
-					closest = transform;
+					closest = target;
 					bestDistance = distance;
 				}
 			}
 
-			return closest;
-		}
-
-		public static GameObject GetClosest(this IEnumerable<GameObject> objects, Vector3 position)
-		{
-			float bestDistance = float.MaxValue;
-			GameObject closest = default;
-
-			foreach (var obj in objects)
-			{
-				var pos = obj.transform.position;
-				float distance = Vector3.SqrMagnitude(pos - position);
-
-				if (distance < bestDistance)
-				{
-					closest = obj;
-					bestDistance = distance;
-				}
-			}
-
-			return closest;
+			return closest;		
 		}
 	}
 }

@@ -1,6 +1,6 @@
 namespace ToolBox.Signals
 {
-	public class Signal#NAME#
+	public readonly struct Signal#NAME# : ISignal
 	{
 
 	}

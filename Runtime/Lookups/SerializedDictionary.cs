@@ -26,7 +26,10 @@ namespace ToolBox.Runtime.Lookups
 		public void OnAfterDeserialize()
 		{
 			for (int i = 0; i < _keys.Count; i++)
-				Add(_keys[i], _values[i]);
+			{
+				if (!Contains(_keys[i]))
+					Add(_keys[i], _values[i]);
+			}
 
 			_keys.Clear();
 			_values.Clear();
